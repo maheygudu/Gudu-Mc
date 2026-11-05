@@ -3,187 +3,237 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GUDU MC - Premium Minecraft Server</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+<title>GUDU CHAT - Connect With Everyone</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#0b0f0b;color:#fff;font-family:'Inter',sans-serif;overflow-x:hidden}
-.pixel{font-family:'Press Start 2P',cursive}
-
-/* ANIMATED BACKGROUND - PROFESSIONAL */
-.bg-anim{position:fixed;inset:0;z-index:-1;overflow:hidden;background:linear-gradient(180deg,#071207,#101d10,#071207);background-size:400% 400%;animation:bgMove 14s ease infinite}
-@keyframes bgMove{0%{background-position:0% 0%}50%{background-position:100% 100%}100%{background-position:0% 0%}}
-.block{position:absolute;opacity:.18;animation:floatBlock linear infinite;border:1px solid rgba(124,252,0,.2)}
-@keyframes floatBlock{0%{transform:translateY(110vh) rotate(0deg)}100%{transform:translateY(-100px) rotate(360deg)}}
-.particle{position:absolute;width:4px;height:4px;background:#7CFC00;animation:particleFloat linear infinite;opacity:.5}
-@keyframes particleFloat{0%{transform:translateY(100vh);opacity:.8}100%{transform:translateY(-10vh);opacity:0}}
-
-/* NAV */
-nav{position:fixed;top:0;width:100%;background:rgba(5,10,5,.92);backdrop-filter:blur(10px);display:flex;justify-content:space-between;align-items:center;padding:16px 30px;z-index:100;border-bottom:1px solid rgba(124,252,0,.3)}
-.logo{font-size:18px;color:#7CFC00;letter-spacing:1px}
-.logo span{color:#fff}
-nav ul{display:flex;list-style:none;gap:28px;font-size:13px;font-weight:600;letter-spacing:.5px}
-nav ul li{cursor:pointer;color:#ccc;transition:.2s}
-nav ul li:hover{color:#7CFC00}
-a{text-decoration:none;color:white}
-
-/* HERO */
-.hero{min-height:100vh;background:url('https://images.unsplash.com/photo-1587573089734-09cb69c0f2b4?q=80&w=2000&auto=format&fit=crop') center/cover;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative}
-.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.6),rgba(0,0,0,.75))}
-.hero-content{position:relative;z-index:2;max-width:800px;padding:20px;animation:heroIn 1s ease}
-@keyframes heroIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-.badge{display:inline-block;background:rgba(124,252,0,.15);border:1px solid #7CFC00;color:#7CFC00;padding:8px 16px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px;margin-bottom:20px}
-.hero h1{font-size:52px;line-height:1.2;font-weight:800;letter-spacing:-1px}
-.hero h1 span{color:#7CFC00}
-.hero p{margin:22px 0;font-size:16px;line-height:1.7;color:#d1d1d1}
-.btn{padding:16px 28px;background:#5aa32b;border:none;border-radius:8px;font-size:14px;font-weight:700;display:inline-block;margin:8px;cursor:pointer;transition:.2s;box-shadow:0 8px 20px rgba(90,163,43,.3)}
-.btn:hover{transform:translateY(-3px);background:#6abf35}
-.btn-outline{background:transparent;border:2px solid #fff;box-shadow:none}
-.btn-outline:hover{background:#fff;color:#000}
-.ip-box{margin-top:26px;background:rgba(0,0,0,.7);border:1px solid rgba(124,252,0,.4);padding:16px 22px;border-radius:10px;font-size:13px;display:inline-block;backdrop-filter:blur(5px)}
-.ip-box b{color:#7CFC00;font-family:'Press Start 2P',cursive;font-size:11px}
-.live{color:#7CFC00;font-weight:700}
-
-/* MARQUEE */
-.marquee{background:#7CFC00;color:#000;padding:12px;overflow:hidden;white-space:nowrap;font-size:12px;font-weight:700;letter-spacing:1px}
-.marquee span{display:inline-block;animation:scroll 18s linear infinite}
-@keyframes scroll{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
-
-/* SECTION */
-section{padding:70px 20px;max-width:1150px;margin:auto;position:relative;z-index:1}
-.sec-label{text-align:center;color:#7CFC00;font-size:12px;font-weight:800;letter-spacing:2px;margin-bottom:10px}
-h2{text-align:center;font-size:32px;font-weight:800;margin-bottom:12px}
-.sub{text-align:center;color:#aaa;font-size:15px;margin-bottom:40px;line-height:1.6}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
-.card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:0;overflow:hidden;transition:.3s;animation:cardFloat 4s ease-in-out infinite}
-.card:nth-child(2){animation-delay:.4s}.card:nth-child(3){animation-delay:.8s}.card:nth-child(4){animation-delay:1.2s}
-@keyframes cardFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.card:hover{transform:translateY(-10px)!important;border-color:#7CFC00;box-shadow:0 20px 40px rgba(124,252,0,.15)}
-.card img{width:100%;height:180px;object-fit:cover;transition:.4s}
-.card:hover img{transform:scale(1.07)}
-.card-body{padding:22px}
-.card h3{font-size:17px;margin-bottom:10px}
-.card p{font-size:14px;line-height:1.6;color:#bbb}
-.card .tag{display:inline-block;background:#7CFC00;color:#000;font-size:11px;font-weight:800;padding:5px 10px;border-radius:5px;margin-bottom:12px}
-
-/* STATS */
-.stats{background:#111a11;border-top:1px solid rgba(124,252,0,.2);border-bottom:1px solid rgba(124,252,0,.2);display:flex;flex-wrap:wrap;justify-content:space-around;text-align:center;padding:35px 10px}
-.stats div h3{font-size:28px;color:#fff}
-.stats div p{font-size:12px;margin-top:8px;color:#7CFC00;font-weight:700;letter-spacing:1px}
-
-/* GALLERY */
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-.gallery img{width:100%;height:190px;object-fit:cover;border-radius:12px;cursor:pointer;transition:.35s;animation:galleryFloat 5s ease-in-out infinite}
-.gallery img:nth-child(2){animation-delay:.5s}.gallery img:nth-child(3){animation-delay:1s}.gallery img:nth-child(4){animation-delay:1.5s}.gallery img:nth-child(5){animation-delay:2s}.gallery img:nth-child(6){animation-delay:2.5s}
-@keyframes galleryFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-.gallery img:hover{transform:scale(1.05)!important;box-shadow:0 15px 30px rgba(0,0,0,.5);outline:2px solid #7CFC00}
-
-/* JOIN */
-.join-box{background:linear-gradient(135deg,#1a2f1a,#0f1a0f);border:1px solid rgba(124,252,0,.3);border-radius:20px;padding:45px 20px;text-align:center}
-.join-box h2{margin-bottom:15px}
-.join-box p{color:#ccc;line-height:1.7}
-.copy-btn{background:#fff;color:#000}
-@media(max-width:600px){.hero h1{font-size:32px} nav ul{display:none}}
-footer{background:#050805;text-align:center;padding:28px;font-size:13px;line-height:1.8;color:#777;border-top:1px solid rgba(255,255,255,.1)}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+body{background:#0b141a;color:#e9edef;display:flex;height:100vh;overflow:hidden}
+button{cursor:pointer;border:none}
+/* SIDEBAR */
+.sidebar{width:360px;background:#111b21;border-right:1px solid #222d34;display:flex;flex-direction:column}
+.my-profile{padding:14px 16px;background:#202c33;display:flex;align-items:center;gap:12px}
+.my-profile img{width:44px;height:44px;border-radius:50%;object-fit:cover;cursor:pointer;border:2px solid #00a884}
+.my-profile b{font-size:15px}
+.my-profile span{font-size:12px;color:#8696a0}
+.my-profile .actions{margin-left:auto;display:flex;gap:14px;font-size:18px}
+.search{margin:10px;background:#202c33;padding:10px 14px;border-radius:10px;display:flex;gap:10px}
+.search input{background:transparent;border:none;outline:none;color:white;width:100%;font-size:14px}
+.tabs{display:flex;padding:0 10px;gap:6px}
+.tabs button{flex:1;padding:9px;border-radius:20px;background:#202c33;color:#aaa;font-size:13px;font-weight:600}
+.tabs button.active{background:#00a884;color:#fff}
+.user-list{flex:1;overflow-y:auto}
+.user{padding:12px 16px;display:flex;gap:12px;align-items:center;cursor:pointer;border-bottom:1px solid #1a262e}
+.user:hover,.user.active{background:#2a3942}
+.user img{width:50px;height:50px;border-radius:50%;object-fit:cover}
+.user .info{flex:1}
+.user .info .top{display:flex;justify-content:space-between}
+.user .info .top b{font-size:15px}
+.user .info .top small{color:#8696a0;font-size:11px}
+.user .info p{font-size:13px;color:#8696a0;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:190px}
+.follow-btn{background:#00a884;color:#fff;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700}
+.follow-btn.following{background:#374045;color:#aebac1}
+.online-dot{width:11px;height:11px;background:#00a884;border-radius:50%;border:2px solid #111b21;position:absolute;bottom:2px;right:2px}
+.avatar-wrap{position:relative}
+/* CHAT AREA */
+.chat-area{flex:1;display:flex;flex-direction:column;background:#0b141a;background-image:url('https://i.imgur.com/8Q1Z5yK.png');background-size:300px}
+.chat-header{padding:10px 16px;background:#202c33;display:flex;align-items:center;gap:12px}
+.chat-header img{width:42px;height:42px;border-radius:50%;object-fit:cover}
+.chat-header .h-info{flex:1}
+.chat-header .h-info b{font-size:15px}
+.chat-header .h-info p{font-size:12px;color:#00a884}
+.call-btns{display:flex;gap:6px}
+.call-btns button{width:42px;height:42px;border-radius:50%;background:#2a3942;color:#fff;font-size:18px}
+.call-btns button:hover{background:#00a884}
+.messages{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:8px}
+.msg{max-width:65%;padding:9px 12px;border-radius:10px;font-size:14px;line-height:1.5;position:relative;animation:pop .2s}
+@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+.msg.me{align-self:flex-end;background:#005c4b;border-top-right-radius:0}
+.msg.other{align-self:flex-start;background:#202c33;border-top-left-radius:0}
+.msg small{display:block;text-align:right;font-size:10px;color:#8696a0;margin-top:4px}
+.input-area{padding:10px 14px;background:#202c33;display:flex;gap:10px;align-items:center}
+.input-area input{flex:1;background:#2a3942;border:none;outline:none;color:white;padding:13px 16px;border-radius:25px;font-size:14px}
+.input-area button{width:46px;height:46px;border-radius:50%;background:#00a884;color:white;font-size:18px}
+.input-area .mic{background:#2a3942}
+/* MODALS */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:100}
+.modal.show{display:flex}
+.modal-box{background:#111b21;width:90%;max-width:420px;border-radius:16px;padding:24px}
+.modal-box h2{margin-bottom:6px}
+.modal-box p{color:#8696a0;font-size:13px;margin-bottom:16px}
+.modal-box input,.modal-box textarea{width:100%;background:#202c33;border:1px solid #2a3942;color:white;padding:12px;border-radius:10px;margin-bottom:12px;outline:none}
+.modal-box textarea{resize:none;height:70px}
+.big-btn{width:100%;background:#00a884;color:white;padding:13px;border-radius:10px;font-weight:700;font-size:15px}
+.video-box{width:90%;max-width:700px;background:#000;border-radius:16px;overflow:hidden;position:relative}
+.video-box video{width:100%;height:380px;object-fit:cover;background:#111}
+.video-controls{position:absolute;bottom:15px;left:0;right:0;display:flex;justify-content:center;gap:12px}
+.video-controls button{width:52px;height:52px;border-radius:50%;font-size:20px;color:white}
+.end-call{background:#ea0038}
+@media(max-width:800px){.sidebar{width:100%} .chat-area{display:none} .chat-area.open{display:flex;position:fixed;inset:0;z-index:50}}
+.empty{text-align:center;margin:auto;color:#8696a0;padding:40px}
+.empty h3{color:white;margin-bottom:10px}
 </style>
 </head>
 <body>
 
-<div class="bg-anim" id="bgAnim"></div>
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="my-profile">
+    <img id="myAvatar" src="https://i.pravatar.cc/100?img=12" onclick="openProfile()">
+    <div><b id="myName">Gudu</b><br><span id="myBio">Hey, I am using Gudu Chat</span></div>
+    <div class="actions"><span title="New Chat" onclick="addUser()">＋</span><span title="Edit Profile" onclick="openProfile()">⚙️</span></div>
+  </div>
+  <div class="search"><span>🔍</span><input id="searchInput" placeholder="Search or start new chat" oninput="renderUsers()"></div>
+  <div class="tabs">
+    <button class="active" onclick="setTab('all',this)">All Chats</button>
+    <button onclick="setTab('following',this)">Following</button>
+    <button onclick="setTab('groups',this)">Groups</button>
+  </div>
+  <div class="user-list" id="userList"></div>
+</div>
 
-<nav>
-  <div class="logo pixel">GUDU <span>MC</span></div>
-  <ul><li>HOME</li><li>GAME MODES</li><li>GALLERY</li><li>STORE</li></ul>
-  <a href="#join" class="btn" style="padding:11px 18px;font-size:13px;margin:0">PLAY NOW</a>
-</nav>
-
-<div class="hero">
-  <div class="hero-content">
-    <div class="badge">PREMIUM MINECRAFT SERVER • INDIA</div>
-    <h1>WELCOME TO<br><span>GUDU MC</span></h1>
-    <p>Experience the most stable and competitive Minecraft server. Survival, Bedwars, Skyblock and Lifesteal - all in one place with 99.9% uptime.</p>
-    <a class="btn" href="#join">JOIN SERVER</a>
-    <a class="btn btn-outline" href="#modes">EXPLORE MODES</a>
-    <br>
-    <div class="ip-box">SERVER IP: <b>play.gudumc.fun</b> &nbsp; | &nbsp; VERSION: 1.16 - 1.21 &nbsp; | &nbsp; <span class="live">842 ONLINE</span></div>
+<!-- CHAT -->
+<div class="chat-area" id="chatArea">
+  <div class="empty" id="emptyState"><h3>Gudu Chat Web</h3><p>Select a chat to start messaging.<br>Send and receive messages, voice and video calls.</p><br><button class="big-btn" style="width:auto;padding:12px 20px" onclick="addUser()">+ Start New Chat</button></div>
+  <div id="chatBox" style="display:none;flex:1;flex-direction:column">
+    <div class="chat-header">
+      <span onclick="document.getElementById('chatArea').classList.remove('open')" style="cursor:pointer">←</span>
+      <img id="chatAvatar" src="">
+      <div class="h-info"><b id="chatName"></b><p id="chatStatus">Online • Last seen today</p></div>
+      <div class="call-btns">
+        <button title="Voice Call" onclick="startCall('voice')">📞</button>
+        <button title="Video Call" onclick="startCall('video')">📹</button>
+        <button title="Profile" onclick="viewUserProfile()">👤</button>
+      </div>
+    </div>
+    <div class="messages" id="messages"></div>
+    <div class="input-area">
+      <button class="mic" onclick="alert('Emoji picker - coming soon')">😊</button>
+      <input id="msgInput" placeholder="Type a message" onkeydown="if(event.key==='Enter') sendMsg()">
+      <button class="mic" onclick="startVoiceNote()">🎤</button>
+      <button onclick="sendMsg()">➤</button>
+    </div>
   </div>
 </div>
 
-<div class="marquee"><span>GUDU MC &nbsp;•&nbsp; NEW SEASON STARTED &nbsp;•&nbsp; FREE RANK GIVEAWAY &nbsp;•&nbsp; SURVIVAL &nbsp;•&nbsp; BEDWARS &nbsp;•&nbsp; SKYBLOCK &nbsp;•&nbsp; LIFESTEAL &nbsp;•&nbsp; JOIN DISCORD FOR REWARDS &nbsp;•&nbsp;</span></div>
-
-<section id="modes">
-  <div class="sec-label">GAME MODES</div>
-  <h2>Choose Your Adventure</h2>
-  <p class="sub">Four professionally managed game modes, updated weekly with new features and events.</p>
-  <div class="grid">
-    <div class="card"><img src="https://images.unsplash.com/photo-1587573089734-09cb69c0f2b4?q=80&w=800&auto=format&fit=crop"><div class="card-body"><span class="tag">MOST PLAYED</span><h3>Survival SMP</h3><p>Build your base, form teams and compete in boss fights. A true SMP experience.</p></div></div>
-    <div class="card"><img src="https://images.unsplash.com/photo-1614294148960-9aa740632a87?q=80&w=800&auto=format&fit=crop"><div class="card-body"><span class="tag">PVP</span><h3>Bedwars</h3><p>Protect your bed, destroy your enemies. Fast-paced PvP for competitive players.</p></div></div>
-    <div class="card"><img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?q=80&w=800&auto=format&fit=crop"><div class="card-body"><span class="tag">ECONOMY</span><h3>Skyblock</h3><p>Start from a small island, farm, trade and become the richest player.</p></div></div>
-    <div class="card"><img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=800&auto=format&fit=crop"><div class="card-body"><span class="tag">HARDCORE</span><h3>Lifesteal</h3><p>Every kill gives you a heart, every death takes one. High risk, high reward.</p></div></div>
+<!-- PROFILE MODAL -->
+<div class="modal" id="profileModal">
+  <div class="modal-box">
+    <h2>Edit Profile</h2><p>Ye profile sabko dikhega. Gmail se login wala system Firebase se connect hoga.</p>
+    <input id="pName" placeholder="Your Name - e.g. Gudu">
+    <input id="pEmail" placeholder="Gmail - e.g. gudu@gmail.com">
+    <input id="pAvatarUrl" placeholder="Profile Photo URL (paste link)">
+    <textarea id="pBio" placeholder="Bio - About you"></textarea>
+    <button class="big-btn" onclick="saveProfile()">Save Profile</button>
+    <button class="big-btn" style="background:#2a3942;margin-top:8px" onclick="closeModal('profileModal')">Cancel</button>
+    <p style="margin-top:12px;text-align:center;font-size:11px">Google Login: Firebase Auth se connect karo<br>Continue with Google button yaha aayega</p>
+    <button class="big-btn" style="background:#fff;color:#000" onclick="alert('Firebase me Google Auth on karne ke baad ye kaam karega. Neeche steps diye hai.')">G - Continue with Google</button>
   </div>
-</section>
-
-<div class="stats">
-  <div><h3>12,500+</h3><p>TOTAL PLAYERS</p></div>
-  <div><h3>842</h3><p>ONLINE NOW</p></div>
-  <div><h3>4</h3><p>GAME MODES</p></div>
-  <div><h3>99.9%</h3><p>UPTIME</p></div>
 </div>
 
-<section>
-  <div class="sec-label">GALLERY</div>
-  <h2>Server Showcase</h2>
-  <p class="sub">A look at our world, builds and community events.</p>
-  <div class="gallery">
-    <img src="https://images.unsplash.com/photo-1587573089734-09cb69c0f2b4?q=80&w=600&auto=format&fit=crop">
-    <img src="https://images.unsplash.com/photo-1614294148960-9aa740632a87?q=80&w=600&auto=format&fit=crop">
-    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=600&auto=format&fit=crop">
-    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop">
-    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=600&auto=format&fit=crop">
-    <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=600&auto=format&fit=crop">
+<!-- CALL MODAL -->
+<div class="modal" id="callModal">
+  <div class="video-box">
+    <video id="localVideo" autoplay muted playsinline></video>
+    <div style="position:absolute;top:14px;left:14px;background:rgba(0,0,0,.6);padding:8px 12px;border-radius:20px;font-size:13px"><span id="callTitle">Video Call</span> • <span style="color:#00a884">Connected</span></div>
+    <div class="video-controls">
+      <button style="background:#2a3942" onclick="toggleMic(this)">🎤</button>
+      <button style="background:#2a3942" onclick="toggleCam(this)">📹</button>
+      <button class="end-call" onclick="endCall()">📞</button>
+    </div>
   </div>
-</section>
-
-<section id="join">
-  <div class="join-box">
-    <div class="sec-label">GET STARTED</div>
-    <h2>Ready To Play?</h2>
-    <p>Open Minecraft &gt; Multiplayer &gt; Add Server &gt; Enter IP:<br><b style="color:#7CFC00;font-family:'Press Start 2P',cursive;font-size:14px">play.gudumc.fun</b></p>
-    <br>
-    <a class="btn" onclick="navigator.clipboard.writeText('play.gudumc.fun');alert('IP Copied!')">COPY IP</a>
-    <a class="btn copy-btn" href="https://discord.gg/gudumc" target="_blank">JOIN DISCORD</a>
-  </div>
-</section>
-
-<footer>
-  © 2026 GUDU MC - All Rights Reserved<br>
-  GUDU MC is not affiliated with Mojang Studios.<br>
-  DISCORD &nbsp;•&nbsp; YOUTUBE &nbsp;•&nbsp; INSTAGRAM
-</footer>
+</div>
 
 <script>
-const bg = document.getElementById('bgAnim');
-const colors = ['#5aa32b','#8B4513','#7CFC00','#2b2b2b'];
-for(let i=0;i<14;i++){
-  let d=document.createElement('div');
-  d.className='block';
-  d.style.left=Math.random()*100+'%';
-  d.style.background=colors[Math.floor(Math.random()*colors.length)];
-  d.style.animationDuration=(8+Math.random()*8)+'s';
-  d.style.animationDelay=Math.random()*5+'s';
-  d.style.width=(18+Math.random()*35)+'px';
-  d.style.height=d.style.width;
-  bg.appendChild(d);
-}
-for(let i=0;i<22;i++){
-  let p=document.createElement('div');
-  p.className='particle';
-  p.style.left=Math.random()*100+'%';
-  p.style.animationDuration=(5+Math.random()*6)+'s';
-  p.style.animationDelay=Math.random()*4+'s';
-  bg.appendChild(p);
-}
-</script>
+let users = JSON.parse(localStorage.getItem('gudu_users')) || [
+  {id:1,name:'Aarav Sharma',avatar:'https://i.pravatar.cc/100?img=13',last:'Bhai kal Bedwars khelte hai?',time:'10:45',following:true,online:true,msgs:[{text:'Hi Gudu!',me:false},{text:'Hi Aarav, kya haal?',me:true},{text:'Bhai kal Bedwars khelte hai?',me:false}]},
+  {id:2,name:'Priya Singh',avatar:'https://i.pravatar.cc/100?img=47',last:'Photo bhej na',time:'09:12',following:true,online:true,msgs:[{text:'Hey!',me:false},{text:'Photo bhej na',me:false}]},
+  {id:3,name:'Rohan - Gudu MC',avatar:'https://i.pravatar.cc/100?img=33',last:'Server kab on hoga?',time:'Yesterday',following:false,online:false,msgs:[{text:'Server kab on hoga?',me:false}]},
+  {id:4,name:'Gudu MC Official',avatar:'https://i.pravatar.cc/100?img=68',last:'New Season Started!',time:'Yesterday',following:true,online:true,msgs:[{text:'New Season Started! Join now',me:false}]},
+];
+let currentTab='all', currentUser=null, myProfile=JSON.parse(localStorage.getItem('gudu_profile'))||{name:'Gudu',email:'',bio:'Hey, I am using Gudu Chat',avatar:'https://i.pravatar.cc/100?img=12'};
 
+function save(){localStorage.setItem('gudu_users',JSON.stringify(users)); localStorage.setItem('gudu_profile',JSON.stringify(myProfile));}
+function renderUsers(){
+  let q=document.getElementById('searchInput').value.toLowerCase();
+  let list=users.filter(u=>{
+    if(currentTab==='following' && !u.following) return false;
+    if(q && !u.name.toLowerCase().includes(q)) return false;
+    return true;
+  });
+  document.getElementById('userList').innerHTML=list.map(u=>`
+    <div class="user ${currentUser?.id===u.id?'active':''}" onclick="openChat(${u.id})">
+      <div class="avatar-wrap"><img src="${u.avatar}">${u.online?'<div class="online-dot"></div>':''}</div>
+      <div class="info"><div class="top"><b>${u.name}</b><small>${u.time}</small></div><p>${u.last}</p></div>
+      <button class="follow-btn ${u.following?'following':''}" onclick="event.stopPropagation();toggleFollow(${u.id},this)">${u.following?'Following':'Follow'}</button>
+    </div>`).join('') || '<p style="padding:20px;color:#8696a0;text-align:center">No chats found</p>';
+  document.getElementById('myName').innerText=myProfile.name;
+  document.getElementById('myBio').innerText=myProfile.bio;
+  document.getElementById('myAvatar').src=myProfile.avatar;
+}
+function openChat(id){
+  currentUser=users.find(u=>u.id===id);
+  document.getElementById('emptyState').style.display='none';
+  document.getElementById('chatBox').style.display='flex';
+  document.getElementById('chatArea').classList.add('open');
+  document.getElementById('chatName').innerText=currentUser.name;
+  document.getElementById('chatAvatar').src=currentUser.avatar;
+  document.getElementById('chatStatus').innerText=currentUser.online?'Online • Typing...':'Offline • Last seen yesterday';
+  renderMsgs(); renderUsers();
+}
+function renderMsgs(){
+  if(!currentUser) return;
+  document.getElementById('messages').innerHTML=currentUser.msgs.map(m=>`<div class="msg ${m.me?'me':'other'}">${m.text}<small>${new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</small></div>`).join('');
+  let el=document.getElementById('messages'); el.scrollTop=el.scrollHeight;
+}
+function sendMsg(){
+  let inp=document.getElementById('msgInput'); if(!inp.value.trim() || !currentUser) return;
+  currentUser.msgs.push({text:inp.value,me:true}); currentUser.last='You: '+inp.value; currentUser.time='Now';
+  inp.value=''; save(); renderMsgs(); renderUsers();
+  // Auto reply - ChatGPT jaisa bot reply
+  setTimeout(()=>{
+    let replies=['Haan bhai sahi bola','Okay, samajh gaya','Haha mast hai','Kal baat karte hai ispe','Gudu MC me aaja'];
+    let r=replies[Math.floor(Math.random()*replies.length)];
+    currentUser.msgs.push({text:r,me:false}); currentUser.last=r; save(); renderMsgs(); renderUsers();
+  },1200);
+}
+function toggleFollow(id,btn){
+  let u=users.find(x=>x.id===id); u.following=!u.following; save(); renderUsers();
+}
+function setTab(t,el){currentTab=t; document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active')); el.classList.add('active'); renderUsers();}
+function addUser(){
+  let name=prompt('New user ka naam daalo:'); if(!name) return;
+  let id=Date.now();
+  users.unshift({id,name,avatar:'https://i.pravatar.cc/100?img='+Math.floor(Math.random()*70),last:'New chat started',time:'Now',following:false,online:true,msgs:[{text:'Hi! Main Gudu Chat use kar raha hu',me:false}]});
+  save(); renderUsers(); openChat(id);
+}
+function openProfile(){
+  document.getElementById('pName').value=myProfile.name;
+  document.getElementById('pEmail').value=myProfile.email;
+  document.getElementById('pBio').value=myProfile.bio;
+  document.getElementById('pAvatarUrl').value=myProfile.avatar;
+  document.getElementById('profileModal').classList.add('show');
+}
+function saveProfile(){
+  myProfile={name:document.getElementById('pName').value||'Gudu',email:document.getElementById('pEmail').value,bio:document.getElementById('pBio').value,avatar:document.getElementById('pAvatarUrl').value||myProfile.avatar};
+  save(); renderUsers(); closeModal('profileModal'); alert('Profile Saved!');
+}
+function closeModal(id){document.getElementById(id).classList.remove('show')}
+function viewUserProfile(){ if(currentUser) alert(currentUser.name+'\nFollowing: '+(currentUser.following?'Yes':'No')+'\nBio: Gudu Chat User'); }
+let stream=null;
+async function startCall(type){
+  if(!currentUser) return;
+  document.getElementById('callTitle').innerText=type==='video'?'Video Call - '+currentUser.name:'Voice Call - '+currentUser.name;
+  document.getElementById('callModal').classList.add('show');
+  try{
+    stream=await navigator.mediaDevices.getUserMedia({video:type==='video',audio:true});
+    document.getElementById('localVideo').srcObject=stream;
+  }catch(e){ alert('Camera/Mic permission do - browser me allow karo'); }
+}
+function endCall(){ if(stream) stream.getTracks().forEach(t=>t.stop()); document.getElementById('callModal').classList.remove('show'); }
+function toggleMic(btn){ btn.style.background=btn.style.background==='rgb(234, 0, 56)'?'#2a3942':'#ea0038'; }
+function toggleCam(btn){ btn.style.background=btn.style.background==='rgb(234, 0, 56)'?'#2a3942':'#ea0038'; }
+function startVoiceNote(){ alert('Voice Note Recording - Mic permission ke baad start hoga. Is demo me text bhejo.'); }
+renderUsers();
+</script>
 </body>
 </html>
