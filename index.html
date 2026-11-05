@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GUDU MC - Best Minecraft Server</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Press Start 2P',cursive}
+body{background:#1a1a1a;color:white;overflow-x:hidden}
+a{text-decoration:none;color:white}
+nav{position:fixed;top:0;width:100%;background:rgba(0,0,0,0.85);display:flex;justify-content:space-between;align-items:center;padding:12px 20px;z-index:100;border-bottom:4px solid #5aa32b}
+.logo{font-size:18px;color:#7CFC00;text-shadow:3px 3px 0 #000}
+.logo span{color:#FFD700}
+nav ul{display:flex;list-style:none;gap:18px;font-size:10px}
+nav ul li:hover{color:#7CFC00;cursor:pointer}
+.hero{height:100vh;background:url('https://images.unsplash.com/photo-1587573089734-09cb69c0f2b4?q=80&w=2000&auto=format&fit=crop') center/cover;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative}
+.hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.55)}
+.hero-content{position:relative;z-index:2}
+.hero h1{font-size:42px;line-height:1.4;text-shadow:5px 5px 0 #000}
+.hero h1 span{color:#7CFC00}
+.hero p{margin:20px 0;font-size:12px;line-height:2;color:#ddd}
+.btn{padding:16px 24px;background:#5aa32b;border:4px solid #000;box-shadow:inset -4px -4px 0 rgba(0,0,0,.4), 0 6px 0 #000;font-size:12px;display:inline-block;margin:8px;cursor:pointer}
+.btn-yellow{background:#FFD700;color:#000}
+.btn:hover{transform:translateY(-3px)}
+.ip-box{margin-top:20px;background:#000;border:3px solid #7CFC00;padding:14px 20px;font-size:11px}
+.ip-box b{color:#FFD700}
+.marquee{background:#FFD700;color:#000;padding:10px;overflow:hidden;white-space:nowrap;font-size:11px;border-top:4px solid #000;border-bottom:4px solid #000}
+.marquee span{display:inline-block;animation:scroll 15s linear infinite}
+@keyframes scroll{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
+section{padding:60px 20px;max-width:1100px;margin:auto}
+h2{text-align:center;font-size:22px;margin-bottom:30px;color:#7CFC00;text-shadow:3px 3px 0 #000}
+h2 span{color:#FFD700}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.card{background:#2b2b2b;border:4px solid #000;padding:20px;text-align:center;box-shadow:0 8px 0 #000;transition:.2s}
+.card:hover{transform:translateY(-8px) rotate(-1deg);border-color:#7CFC00}
+.card img{width:100%;height:160px;object-fit:cover;border:3px solid #000;margin-bottom:15px}
+.card h3{font-size:12px;margin-bottom:10px;color:#FFD700;line-height:1.6}
+.card p{font-size:9px;line-height:1.8;color:#ccc}
+.stats{background:#5aa32b;display:flex;flex-wrap:wrap;justify-content:space-around;text-align:center;padding:30px 10px;border-top:4px solid #000;border-bottom:4px solid #000}
+.stats div h3{font-size:22px;color:#fff;text-shadow:3px 3px 0 #000}
+.stats div p{font-size:9px;margin-top:8px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.gallery img{width:100%;height:180px;object-fit:cover;border:4px solid #000;cursor:pointer;transition:.2s}
+.gallery img:hover{transform:scale(1.05);border-color:#FFD700}
+.join-box{background:url('https://images.unsplash.com/photo-1614294148960-9aa740632a87?q=80&w=2000&auto=format&fit=crop') center/cover;border:4px solid #000;padding:40px;text-align:center;position:relative}
+.join-box::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.6)}
+.join-inner{position:relative;z-index:2}
+.join-inner h2{color:white}
+footer{background:#000;text-align:center;padding:25px;font-size:9px;line-height:2;color:#888;border-top:4px solid #5aa32b}
+@media(max-width:600px){.hero h1{font-size:24px} nav ul{display:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">GUDU <span>MC</span></div>
+  <ul><li>HOME</li><li>MODES</li><li>GALLERY</li><li>SHOP</li></ul>
+  <a href="#join" class="btn" style="padding:10px 14px;font-size:10px">PLAY NOW</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-content">
+    <p>🔥 #1 MINECRAFT SERVER IN INDIA 🔥</p>
+    <h1>WELCOME TO<br><span>GUDU MC</span></h1>
+    <p>Survival • Bedwars • Skyblock • Lifesteal<br>1000+ Players Daily - Lag Free Experience</p>
+    <a class="btn" href="#join">▶ JOIN NOW</a>
+    <a class="btn btn-yellow" href="#modes">🎮 EXPLORE MODES</a>
+    <div class="ip-box">SERVER IP: <b>play.gudumc.fun</b> &nbsp; | &nbsp; VERSION: <b>1.16 - 1.21</b> &nbsp; <span style="color:#7CFC00">● 842 ONLINE</span></div>
+  </div>
+</div>
+
+<div class="marquee"><span>⭐ GUDU MC ⭐ NEW SEASON STARTED ⭐ FREE RANK GIVEAWAY ⭐ JOIN DISCORD FOR REWARDS ⭐ SURVIVAL • BEDWARS • SKYBLOCK • LIFESTEAL ⭐</span></div>
+
+<section id="modes">
+  <h2>CHOOSE YOUR <span>MODE</span></h2>
+  <div class="grid">
+    <div class="card"><img src="https://images.unsplash.com/photo-1587573089734-09cb69c0f2b4?q=80&w=800&auto=format&fit=crop"><h3>⚔️ SURVIVAL SMP</h3><p>Apna ghar banao, team banao, boss fight karo. Real SMP feel!</p><br><a class="btn" style="font-size:9px">PLAY</a></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1614294148960-9aa740632a87?q=80&w=800&auto=format&fit=crop"><h3>🛏️ BEDWARS</h3><p>Bed bachao, enemy ka bed todo. Fast PvP, Pro Players ka mode!</p><br><a class="btn" style="font-size:9px">PLAY</a></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?q=80&w=800&auto=format&fit=crop"><h3>🏝️ SKYBLOCK</h3><p>Ek chota island, badi sapne. Farm, Trade aur Rich bano!</p><br><a class="btn" style="font-size:9px">PLAY</a></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=800&auto=format&fit=crop"><h3>❤️ LIFESTEAL</h3><p>Maroge to Heart jayega, Jeetoge to Heart milega. Hardcore!</p><br><a class="btn" style="font-size:9px">PLAY</a></div>
+  </div>
+</section>
+
+<div class="stats">
+  <div><h3>12,500+</h3><p>TOTAL PLAYERS</p></div>
+  <div><h3>842</h3><p>ONLINE NOW</p></div>
+  <div><h3>4</h3><p>GAME MODES</p></div>
+  <div><h3>99.9%</h3><p>UPTIME - NO LAG</p></div>
+</div>
+
+<section>
+  <h2>EPIC <span>GALLERY</span></h2>
+  <div class="gallery">
+    <img src="https://images.unsplash.com/photo-1587573089734-09cb69c0f2b4?q=80&w=600&auto=format&fit=crop">
+    <img src="https://images.unsplash.com/photo-1614294148960-9aa740632a87?q=80&w=600&auto=format&fit=crop">
+    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=600&auto=format&fit=crop">
+    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop">
+    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=600&auto=format&fit=crop">
+    <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=600&auto=format&fit=crop">
+  </div>
+</section>
+
+<section id="join">
+  <div class="join-box"><div class="join-inner">
+    <h2>READY TO PLAY?</h2>
+    <p style="font-size:10px;line-height:2;margin:15px 0">Minecraft kholo > Multiplayer > Add Server > IP daalo:<br><b style="color:#FFD700;font-size:14px">play.gudumc.fun</b></p>
+    <a class="btn" onclick="navigator.clipboard.writeText('play.gudumc.fun');alert('IP Copy Ho Gaya!')">📋 COPY IP</a>
+    <a class="btn btn-yellow" href="https://discord.gg/gudumc" target="_blank">💬 JOIN DISCORD</a>
+  </div></div>
+</section>
+
+<footer>
+  © 2026 GUDU MC - All Rights Reserved<br>
+  Made with ❤️ by GUDU | Not affiliated with Mojang<br>
+  DISCORD • YOUTUBE • INSTAGRAM
+</footer>
+
+</body>
+</html>
