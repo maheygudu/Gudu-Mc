@@ -3,19 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GUDU CHAT - Connect With Everyone</title>
+<title>GUDU CHAT - Real Chat App</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
-body{background:#0b141a;color:#e9edef;display:flex;height:100vh;overflow:hidden}
+body{background:#0b141a;color:#e9edef;height:100vh;overflow:hidden}
 button{cursor:pointer;border:none}
-/* SIDEBAR */
+/* LOGIN SCREEN */
+#loginScreen{position:fixed;inset:0;background:#0b141a;display:flex;align-items:center;justify-content:center;z-index:200;padding:20px}
+.login-box{background:#111b21;width:100%;max-width:420px;border-radius:20px;padding:32px;text-align:center;border:1px solid #222d34}
+.login-box .logo{font-size:42px;margin-bottom:12px}
+.login-box h1{font-size:26px;margin-bottom:8px}
+.login-box p{color:#8696a0;font-size:14px;line-height:1.6;margin-bottom:22px}
+.google-btn{width:100%;background:#fff;color:#000;padding:14px;border-radius:12px;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;gap:10px}
+.google-btn:hover{transform:translateY(-1px)}
+.google-btn img{width:20px}
+.divider{margin:18px 0;color:#8696a0;font-size:12px}
+.login-box input{width:100%;background:#202c33;border:1px solid #2a3942;color:white;padding:13px;border-radius:10px;margin-bottom:10px;outline:none;font-size:14px}
+.email-btn{width:100%;background:#00a884;color:#fff;padding:13px;border-radius:10px;font-weight:700}
+.note{margin-top:16px;font-size:11px;color:#666;line-height:1.6}
+/* APP */
+#app{display:none;height:100vh}
+#app.show{display:flex}
 .sidebar{width:360px;background:#111b21;border-right:1px solid #222d34;display:flex;flex-direction:column}
 .my-profile{padding:14px 16px;background:#202c33;display:flex;align-items:center;gap:12px}
-.my-profile img{width:44px;height:44px;border-radius:50%;object-fit:cover;cursor:pointer;border:2px solid #00a884}
+.my-profile img{width:44px;height:44px;border-radius:50%;object-fit:cover;cursor:pointer}
 .my-profile b{font-size:15px}
 .my-profile span{font-size:12px;color:#8696a0}
-.my-profile .actions{margin-left:auto;display:flex;gap:14px;font-size:18px}
+.my-profile .actions{margin-left:auto;font-size:18px;display:flex;gap:12px}
 .search{margin:10px;background:#202c33;padding:10px 14px;border-radius:10px;display:flex;gap:10px}
 .search input{background:transparent;border:none;outline:none;color:white;width:100%;font-size:14px}
 .tabs{display:flex;padding:0 10px;gap:6px}
@@ -25,92 +40,99 @@ button{cursor:pointer;border:none}
 .user{padding:12px 16px;display:flex;gap:12px;align-items:center;cursor:pointer;border-bottom:1px solid #1a262e}
 .user:hover,.user.active{background:#2a3942}
 .user img{width:50px;height:50px;border-radius:50%;object-fit:cover}
-.user .info{flex:1}
+.user .info{flex:1;min-width:0}
 .user .info .top{display:flex;justify-content:space-between}
-.user .info .top b{font-size:15px}
-.user .info .top small{color:#8696a0;font-size:11px}
-.user .info p{font-size:13px;color:#8696a0;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:190px}
-.follow-btn{background:#00a884;color:#fff;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700}
+.user .info p{font-size:13px;color:#8696a0;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.follow-btn{background:#00a884;color:#fff;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700;flex-shrink:0}
 .follow-btn.following{background:#374045;color:#aebac1}
-.online-dot{width:11px;height:11px;background:#00a884;border-radius:50%;border:2px solid #111b21;position:absolute;bottom:2px;right:2px}
-.avatar-wrap{position:relative}
-/* CHAT AREA */
-.chat-area{flex:1;display:flex;flex-direction:column;background:#0b141a;background-image:url('https://i.imgur.com/8Q1Z5yK.png');background-size:300px}
+.empty-list{padding:40px 20px;text-align:center;color:#8696a0;font-size:13px;line-height:1.7}
+.empty-list b{color:white;font-size:15px}
+/* CHAT */
+.chat-area{flex:1;display:flex;flex-direction:column;background:#0b141a}
 .chat-header{padding:10px 16px;background:#202c33;display:flex;align-items:center;gap:12px}
 .chat-header img{width:42px;height:42px;border-radius:50%;object-fit:cover}
 .chat-header .h-info{flex:1}
-.chat-header .h-info b{font-size:15px}
-.chat-header .h-info p{font-size:12px;color:#00a884}
 .call-btns{display:flex;gap:6px}
 .call-btns button{width:42px;height:42px;border-radius:50%;background:#2a3942;color:#fff;font-size:18px}
-.call-btns button:hover{background:#00a884}
 .messages{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:8px}
-.msg{max-width:65%;padding:9px 12px;border-radius:10px;font-size:14px;line-height:1.5;position:relative;animation:pop .2s}
-@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+.msg{max-width:65%;padding:9px 12px;border-radius:10px;font-size:14px;line-height:1.5}
 .msg.me{align-self:flex-end;background:#005c4b;border-top-right-radius:0}
 .msg.other{align-self:flex-start;background:#202c33;border-top-left-radius:0}
 .msg small{display:block;text-align:right;font-size:10px;color:#8696a0;margin-top:4px}
 .input-area{padding:10px 14px;background:#202c33;display:flex;gap:10px;align-items:center}
 .input-area input{flex:1;background:#2a3942;border:none;outline:none;color:white;padding:13px 16px;border-radius:25px;font-size:14px}
 .input-area button{width:46px;height:46px;border-radius:50%;background:#00a884;color:white;font-size:18px}
-.input-area .mic{background:#2a3942}
-/* MODALS */
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:100}
+.empty-chat{margin:auto;text-align:center;color:#8696a0;padding:30px}
+.empty-chat h3{color:white;margin-bottom:8px}
+/* MODAL */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;z-index:300;padding:16px}
 .modal.show{display:flex}
-.modal-box{background:#111b21;width:90%;max-width:420px;border-radius:16px;padding:24px}
-.modal-box h2{margin-bottom:6px}
-.modal-box p{color:#8696a0;font-size:13px;margin-bottom:16px}
+.modal-box{background:#111b21;width:100%;max-width:420px;border-radius:16px;padding:24px}
 .modal-box input,.modal-box textarea{width:100%;background:#202c33;border:1px solid #2a3942;color:white;padding:12px;border-radius:10px;margin-bottom:12px;outline:none}
-.modal-box textarea{resize:none;height:70px}
-.big-btn{width:100%;background:#00a884;color:white;padding:13px;border-radius:10px;font-weight:700;font-size:15px}
-.video-box{width:90%;max-width:700px;background:#000;border-radius:16px;overflow:hidden;position:relative}
+.big-btn{width:100%;background:#00a884;color:white;padding:13px;border-radius:10px;font-weight:700}
+.video-box{width:100%;max-width:700px;background:#000;border-radius:16px;overflow:hidden;position:relative}
 .video-box video{width:100%;height:380px;object-fit:cover;background:#111}
 .video-controls{position:absolute;bottom:15px;left:0;right:0;display:flex;justify-content:center;gap:12px}
 .video-controls button{width:52px;height:52px;border-radius:50%;font-size:20px;color:white}
-.end-call{background:#ea0038}
-@media(max-width:800px){.sidebar{width:100%} .chat-area{display:none} .chat-area.open{display:flex;position:fixed;inset:0;z-index:50}}
-.empty{text-align:center;margin:auto;color:#8696a0;padding:40px}
-.empty h3{color:white;margin-bottom:10px}
+@media(max-width:800px){.sidebar{width:100%} .chat-area{display:none} .chat-area.open{display:flex;position:fixed;inset:0;z-index:100}}
 </style>
 </head>
 <body>
 
-<!-- SIDEBAR -->
-<div class="sidebar">
-  <div class="my-profile">
-    <img id="myAvatar" src="https://i.pravatar.cc/100?img=12" onclick="openProfile()">
-    <div><b id="myName">Gudu</b><br><span id="myBio">Hey, I am using Gudu Chat</span></div>
-    <div class="actions"><span title="New Chat" onclick="addUser()">＋</span><span title="Edit Profile" onclick="openProfile()">⚙️</span></div>
+<!-- LOGIN -->
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="logo">💬</div>
+    <h1>GUDU CHAT</h1>
+    <p>Real chat, real people.<br>Login with Google to continue.</p>
+    <button class="google-btn" onclick="loginWithGoogle()">
+      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"> Continue with Google
+    </button>
+    <div class="divider">OR</div>
+    <input id="emailInput" type="email" placeholder="Enter your Gmail">
+    <input id="nameInput" placeholder="Enter your Name">
+    <button class="email-btn" onclick="loginWithEmail()">Continue with Email</button>
+    <p class="note">Firebase Config daalne ke baad Google Login 100% real me kaam karega.<br>Abhi ke liye Email wala login test kar sakte ho.</p>
   </div>
-  <div class="search"><span>🔍</span><input id="searchInput" placeholder="Search or start new chat" oninput="renderUsers()"></div>
-  <div class="tabs">
-    <button class="active" onclick="setTab('all',this)">All Chats</button>
-    <button onclick="setTab('following',this)">Following</button>
-    <button onclick="setTab('groups',this)">Groups</button>
-  </div>
-  <div class="user-list" id="userList"></div>
 </div>
 
-<!-- CHAT -->
-<div class="chat-area" id="chatArea">
-  <div class="empty" id="emptyState"><h3>Gudu Chat Web</h3><p>Select a chat to start messaging.<br>Send and receive messages, voice and video calls.</p><br><button class="big-btn" style="width:auto;padding:12px 20px" onclick="addUser()">+ Start New Chat</button></div>
-  <div id="chatBox" style="display:none;flex:1;flex-direction:column">
-    <div class="chat-header">
-      <span onclick="document.getElementById('chatArea').classList.remove('open')" style="cursor:pointer">←</span>
-      <img id="chatAvatar" src="">
-      <div class="h-info"><b id="chatName"></b><p id="chatStatus">Online • Last seen today</p></div>
-      <div class="call-btns">
-        <button title="Voice Call" onclick="startCall('voice')">📞</button>
-        <button title="Video Call" onclick="startCall('video')">📹</button>
-        <button title="Profile" onclick="viewUserProfile()">👤</button>
-      </div>
+<!-- APP -->
+<div id="app">
+  <div class="sidebar">
+    <div class="my-profile">
+      <img id="myAvatar" src="https://i.pravatar.cc/100?img=12" onclick="openProfile()">
+      <div style="flex:1;min-width:0"><b id="myName">Loading...</b><br><span id="myBio">...</span></div>
+      <div class="actions"><span onclick="addUser()">＋</span><span onclick="logout()">↪</span></div>
     </div>
-    <div class="messages" id="messages"></div>
-    <div class="input-area">
-      <button class="mic" onclick="alert('Emoji picker - coming soon')">😊</button>
-      <input id="msgInput" placeholder="Type a message" onkeydown="if(event.key==='Enter') sendMsg()">
-      <button class="mic" onclick="startVoiceNote()">🎤</button>
-      <button onclick="sendMsg()">➤</button>
+    <div class="search"><span>🔍</span><input id="searchInput" placeholder="Search users by Gmail / Name" oninput="renderUsers()"></div>
+    <div class="tabs">
+      <button class="active" onclick="setTab('all',this)">All Chats</button>
+      <button onclick="setTab('following',this)">Following</button>
+    </div>
+    <div class="user-list" id="userList"></div>
+  </div>
+
+  <div class="chat-area" id="chatArea">
+    <div class="empty-chat" id="emptyState">
+      <h3>Welcome to Gudu Chat</h3>
+      <p>No chats yet.<br>Search user or add new chat to start.</p><br>
+      <button class="big-btn" style="width:auto;padding:12px 22px" onclick="addUser()">+ New Chat</button>
+    </div>
+    <div id="chatBox" style="display:none;flex:1;flex-direction:column">
+      <div class="chat-header">
+        <span onclick="document.getElementById('chatArea').classList.remove('open')" style="cursor:pointer">←</span>
+        <img id="chatAvatar" src="">
+        <div class="h-info"><b id="chatName"></b><br><span id="chatStatus" style="font-size:12px;color:#00a884">Online</span></div>
+        <div class="call-btns">
+          <button onclick="startCall('voice')">📞</button>
+          <button onclick="startCall('video')">📹</button>
+        </div>
+      </div>
+      <div class="messages" id="messages"></div>
+      <div class="input-area">
+        <input id="msgInput" placeholder="Type a message" onkeydown="if(event.key==='Enter') sendMsg()">
+        <button onclick="sendMsg()">➤</button>
+      </div>
     </div>
   </div>
 </div>
@@ -118,15 +140,13 @@ button{cursor:pointer;border:none}
 <!-- PROFILE MODAL -->
 <div class="modal" id="profileModal">
   <div class="modal-box">
-    <h2>Edit Profile</h2><p>Ye profile sabko dikhega. Gmail se login wala system Firebase se connect hoga.</p>
-    <input id="pName" placeholder="Your Name - e.g. Gudu">
-    <input id="pEmail" placeholder="Gmail - e.g. gudu@gmail.com">
-    <input id="pAvatarUrl" placeholder="Profile Photo URL (paste link)">
-    <textarea id="pBio" placeholder="Bio - About you"></textarea>
+    <h2 style="margin-bottom:12px">Your Profile</h2>
+    <input id="pName" placeholder="Your Name">
+    <input id="pEmail" placeholder="Gmail" disabled>
+    <input id="pAvatarUrl" placeholder="Profile Photo URL">
+    <textarea id="pBio" placeholder="Bio" style="width:100%;background:#202c33;border:1px solid #2a3942;color:white;padding:12px;border-radius:10px;margin-bottom:12px;outline:none;resize:none"></textarea>
     <button class="big-btn" onclick="saveProfile()">Save Profile</button>
-    <button class="big-btn" style="background:#2a3942;margin-top:8px" onclick="closeModal('profileModal')">Cancel</button>
-    <p style="margin-top:12px;text-align:center;font-size:11px">Google Login: Firebase Auth se connect karo<br>Continue with Google button yaha aayega</p>
-    <button class="big-btn" style="background:#fff;color:#000" onclick="alert('Firebase me Google Auth on karne ke baad ye kaam karega. Neeche steps diye hai.')">G - Continue with Google</button>
+    <button class="big-btn" style="background:#2a3942;margin-top:8px" onclick="closeModal('profileModal')">Close</button>
   </div>
 </div>
 
@@ -134,105 +154,217 @@ button{cursor:pointer;border:none}
 <div class="modal" id="callModal">
   <div class="video-box">
     <video id="localVideo" autoplay muted playsinline></video>
-    <div style="position:absolute;top:14px;left:14px;background:rgba(0,0,0,.6);padding:8px 12px;border-radius:20px;font-size:13px"><span id="callTitle">Video Call</span> • <span style="color:#00a884">Connected</span></div>
+    <div style="position:absolute;top:14px;left:14px;background:rgba(0,0,0,.6);padding:8px 12px;border-radius:20px;font-size:13px"><span id="callTitle">Call</span></div>
     <div class="video-controls">
-      <button style="background:#2a3942" onclick="toggleMic(this)">🎤</button>
-      <button style="background:#2a3942" onclick="toggleCam(this)">📹</button>
-      <button class="end-call" onclick="endCall()">📞</button>
+      <button style="background:#2a3942" onclick="this.style.background=this.style.background==='rgb(234, 0, 56)'?'#2a3942':'#ea0038'">🎤</button>
+      <button style="background:#2a3942" onclick="this.style.background=this.style.background==='rgb(234, 0, 56)'?'#2a3942':'#ea0038'">📹</button>
+      <button style="background:#ea0038" onclick="endCall()">📞</button>
     </div>
   </div>
 </div>
 
-<script>
-let users = JSON.parse(localStorage.getItem('gudu_users')) || [
-  {id:1,name:'Aarav Sharma',avatar:'https://i.pravatar.cc/100?img=13',last:'Bhai kal Bedwars khelte hai?',time:'10:45',following:true,online:true,msgs:[{text:'Hi Gudu!',me:false},{text:'Hi Aarav, kya haal?',me:true},{text:'Bhai kal Bedwars khelte hai?',me:false}]},
-  {id:2,name:'Priya Singh',avatar:'https://i.pravatar.cc/100?img=47',last:'Photo bhej na',time:'09:12',following:true,online:true,msgs:[{text:'Hey!',me:false},{text:'Photo bhej na',me:false}]},
-  {id:3,name:'Rohan - Gudu MC',avatar:'https://i.pravatar.cc/100?img=33',last:'Server kab on hoga?',time:'Yesterday',following:false,online:false,msgs:[{text:'Server kab on hoga?',me:false}]},
-  {id:4,name:'Gudu MC Official',avatar:'https://i.pravatar.cc/100?img=68',last:'New Season Started!',time:'Yesterday',following:true,online:true,msgs:[{text:'New Season Started! Join now',me:false}]},
-];
-let currentTab='all', currentUser=null, myProfile=JSON.parse(localStorage.getItem('gudu_profile'))||{name:'Gudu',email:'',bio:'Hey, I am using Gudu Chat',avatar:'https://i.pravatar.cc/100?img=12'};
+<!-- FIREBASE SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
-function save(){localStorage.setItem('gudu_users',JSON.stringify(users)); localStorage.setItem('gudu_profile',JSON.stringify(myProfile));}
+<script>
+// ============ YAHAN APNA FIREBASE CONFIG DALO ============
+const firebaseConfig = {
+  apiKey: "PASTE_YAHAN",
+  authDomain: "PASTE_YAHAN",
+  projectId: "PASTE_YAHAN",
+  storageBucket: "PASTE_YAHAN",
+  messagingSenderId: "PASTE_YAHAN",
+  appId: "PASTE_YAHAN"
+};
+// ================================================
+
+let auth=null, db=null, firebaseReady=false;
+try{
+  if(firebaseConfig.apiKey !== "PASTE_YAHAN"){
+    firebase.initializeApp(firebaseConfig);
+    auth = firebase.auth();
+    db = firebase.firestore();
+    firebaseReady = true;
+  }
+}catch(e){ console.log("Firebase not configured yet", e); }
+
+let currentUser = null; // logged in user
+let users = []; // REAL users - Firebase se aayenge, koi demo nahi
+let chats = {}; // {userId: [msgs]}
+let currentTab='all', activeChat=null;
+
+// --- LOGIN ---
+async function loginWithGoogle(){
+  if(!firebaseReady){
+    alert("Pehle Firebase Config daalo!\nFirebase Console se config copy karke firebaseConfig me paste karo.\n\nTab tak Email wala login use karo.");
+    return;
+  }
+  try{
+    const provider = new firebase.auth.GoogleAuthProvider();
+    const result = await auth.signInWithPopup(provider);
+    const u = result.user;
+    await loginSuccess({name: u.displayName, email: u.email, avatar: u.photoURL, uid: u.uid});
+    // Firestore me user save karo
+    await db.collection('users').doc(u.uid).set({name:u.displayName,email:u.email,avatar:u.photoURL,lastSeen:Date.now()}, {merge:true});
+    loadRealUsers();
+  }catch(e){ alert("Login Error: "+e.message); }
+}
+function loginWithEmail(){
+  let email=document.getElementById('emailInput').value.trim();
+  let name=document.getElementById('nameInput').value.trim();
+  if(!email || !name){ alert("Gmail aur Naam dono daalo"); return; }
+  if(!email.includes('@')){ alert("Sahi Gmail daalo"); return; }
+  loginSuccess({name, email, avatar:'https://i.pravatar.cc/100?u='+email, uid:'local_'+email});
+  alert("Test Login Ho Gaya! Firebase daalne ke baad ye real Google Login ban jayega.");
+}
+function loginSuccess(profile){
+  currentUser = profile;
+  localStorage.setItem('gudu_current_user', JSON.stringify(profile));
+  document.getElementById('loginScreen').style.display='none';
+  document.getElementById('app').classList.add('show');
+  document.getElementById('myName').innerText = profile.name;
+  document.getElementById('myBio').innerText = profile.email;
+  document.getElementById('myAvatar').src = profile.avatar;
+  renderUsers();
+  if(firebaseReady) loadRealUsers();
+}
+function logout(){
+  localStorage.removeItem('gudu_current_user');
+  if(auth) auth.signOut();
+  location.reload();
+}
+
+// --- REAL USERS FROM FIREBASE ---
+async function loadRealUsers(){
+  if(!firebaseReady) return;
+  // Firestore se saare users lao - current user ko chhod ke
+  db.collection('users').onSnapshot(snap=>{
+    users = [];
+    snap.forEach(doc=>{
+      let d=doc.data();
+      if(d.email !== currentUser.email){
+        users.push({id:doc.id, name:d.name, email:d.email, avatar:d.avatar||'https://i.pravatar.cc/100?u='+d.email, last:'Tap to chat', time:'', following:false, online:true});
+      }
+    });
+    renderUsers();
+  });
+}
+
+// --- UI ---
 function renderUsers(){
   let q=document.getElementById('searchInput').value.toLowerCase();
   let list=users.filter(u=>{
     if(currentTab==='following' && !u.following) return false;
-    if(q && !u.name.toLowerCase().includes(q)) return false;
+    if(q && !(u.name.toLowerCase().includes(q) || u.email.toLowerCase().includes(q))) return false;
     return true;
   });
+  if(list.length===0){
+    document.getElementById('userList').innerHTML=`<div class="empty-list"><b>No Users Yet</b><br><br>Abhi koi real user nahi hai.<br>Dusra dost login karega to yahan dikhega.<br><br>Ya + dabake Gmail se user add karo.</div>`;
+    return;
+  }
   document.getElementById('userList').innerHTML=list.map(u=>`
-    <div class="user ${currentUser?.id===u.id?'active':''}" onclick="openChat(${u.id})">
-      <div class="avatar-wrap"><img src="${u.avatar}">${u.online?'<div class="online-dot"></div>':''}</div>
-      <div class="info"><div class="top"><b>${u.name}</b><small>${u.time}</small></div><p>${u.last}</p></div>
-      <button class="follow-btn ${u.following?'following':''}" onclick="event.stopPropagation();toggleFollow(${u.id},this)">${u.following?'Following':'Follow'}</button>
-    </div>`).join('') || '<p style="padding:20px;color:#8696a0;text-align:center">No chats found</p>';
-  document.getElementById('myName').innerText=myProfile.name;
-  document.getElementById('myBio').innerText=myProfile.bio;
-  document.getElementById('myAvatar').src=myProfile.avatar;
-}
-function openChat(id){
-  currentUser=users.find(u=>u.id===id);
-  document.getElementById('emptyState').style.display='none';
-  document.getElementById('chatBox').style.display='flex';
-  document.getElementById('chatArea').classList.add('open');
-  document.getElementById('chatName').innerText=currentUser.name;
-  document.getElementById('chatAvatar').src=currentUser.avatar;
-  document.getElementById('chatStatus').innerText=currentUser.online?'Online • Typing...':'Offline • Last seen yesterday';
-  renderMsgs(); renderUsers();
-}
-function renderMsgs(){
-  if(!currentUser) return;
-  document.getElementById('messages').innerHTML=currentUser.msgs.map(m=>`<div class="msg ${m.me?'me':'other'}">${m.text}<small>${new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</small></div>`).join('');
-  let el=document.getElementById('messages'); el.scrollTop=el.scrollHeight;
-}
-function sendMsg(){
-  let inp=document.getElementById('msgInput'); if(!inp.value.trim() || !currentUser) return;
-  currentUser.msgs.push({text:inp.value,me:true}); currentUser.last='You: '+inp.value; currentUser.time='Now';
-  inp.value=''; save(); renderMsgs(); renderUsers();
-  // Auto reply - ChatGPT jaisa bot reply
-  setTimeout(()=>{
-    let replies=['Haan bhai sahi bola','Okay, samajh gaya','Haha mast hai','Kal baat karte hai ispe','Gudu MC me aaja'];
-    let r=replies[Math.floor(Math.random()*replies.length)];
-    currentUser.msgs.push({text:r,me:false}); currentUser.last=r; save(); renderMsgs(); renderUsers();
-  },1200);
-}
-function toggleFollow(id,btn){
-  let u=users.find(x=>x.id===id); u.following=!u.following; save(); renderUsers();
+    <div class="user ${activeChat?.id===u.id?'active':''}" onclick="openChat('${u.id}')">
+      <img src="${u.avatar}">
+      <div class="info"><div class="top"><b>${u.name}</b></div><p>${u.email}</p><p>${u.last}</p></div>
+      <button class="follow-btn ${u.following?'following':''}" onclick="event.stopPropagation();toggleFollow('${u.id}',this)">${u.following?'Following':'Follow'}</button>
+    </div>`).join('');
 }
 function setTab(t,el){currentTab=t; document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active')); el.classList.add('active'); renderUsers();}
 function addUser(){
-  let name=prompt('New user ka naam daalo:'); if(!name) return;
-  let id=Date.now();
-  users.unshift({id,name,avatar:'https://i.pravatar.cc/100?img='+Math.floor(Math.random()*70),last:'New chat started',time:'Now',following:false,online:true,msgs:[{text:'Hi! Main Gudu Chat use kar raha hu',me:false}]});
-  save(); renderUsers(); openChat(id);
+  let email=prompt('Dost ka Gmail daalo (jisne login kiya ho):'); if(!email) return;
+  let name=prompt('Uska Naam:'); if(!name) return;
+  let id='manual_'+Date.now();
+  users.unshift({id, name, email, avatar:'https://i.pravatar.cc/100?u='+email, last:'New chat', time:'Now', following:false, online:true});
+  renderUsers(); openChat(id);
+}
+function openChat(id){
+  activeChat=users.find(u=>u.id===id);
+  document.getElementById('emptyState').style.display='none';
+  document.getElementById('chatBox').style.display='flex';
+  document.getElementById('chatArea').classList.add('open');
+  document.getElementById('chatName').innerText=activeChat.name;
+  document.getElementById('chatAvatar').src=activeChat.avatar;
+  renderMsgs(); renderUsers();
+  if(firebaseReady) listenMessages();
+}
+function renderMsgs(){
+  let msgs=chats[activeChat.id]||[];
+  if(msgs.length===0){
+    document.getElementById('messages').innerHTML='<p style="text-align:center;color:#8696a0;font-size:13px;margin-top:20px">No messages yet. Say Hi!</p>';
+    return;
+  }
+  document.getElementById('messages').innerHTML=msgs.map(m=>`<div class="msg ${m.me?'me':'other'}">${m.text}<small>${m.time||''}</small></div>`).join('');
+  let el=document.getElementById('messages'); el.scrollTop=el.scrollHeight;
+}
+async function sendMsg(){
+  let inp=document.getElementById('msgInput'); if(!inp.value.trim() || !activeChat) return;
+  let text=inp.value; inp.value='';
+  let msg={text, me:true, time:new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})};
+  if(!chats[activeChat.id]) chats[activeChat.id]=[];
+  chats[activeChat.id].push(msg);
+  activeChat.last='You: '+text;
+  renderMsgs(); renderUsers();
+  // Firebase me bhejo - real DM
+  if(firebaseReady){
+    let chatId=[currentUser.uid, activeChat.id].sort().join('_');
+    await db.collection('chats').doc(chatId).collection('messages').add({text, from:currentUser.uid, fromName:currentUser.name, to:activeChat.id, time:Date.now()});
+  }
+}
+function listenMessages(){
+  if(!firebaseReady || !activeChat) return;
+  let chatId=[currentUser.uid, activeChat.id].sort().join('_');
+  db.collection('chats').doc(chatId).collection('messages').orderBy('time').onSnapshot(snap=>{
+    chats[activeChat.id]=[];
+    snap.forEach(doc=>{
+      let d=doc.data();
+      chats[activeChat.id].push({text:d.text, me:d.from===currentUser.uid, time:new Date(d.time).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})});
+    });
+    renderMsgs();
+  });
+}
+function toggleFollow(id,btn){
+  let u=users.find(x=>x.id===id); u.following=!u.following;
+  if(firebaseReady){
+    db.collection('users').doc(currentUser.uid).collection('following').doc(id).set({following:u.following});
+  }
+  renderUsers();
 }
 function openProfile(){
-  document.getElementById('pName').value=myProfile.name;
-  document.getElementById('pEmail').value=myProfile.email;
-  document.getElementById('pBio').value=myProfile.bio;
-  document.getElementById('pAvatarUrl').value=myProfile.avatar;
+  document.getElementById('pName').value=currentUser.name;
+  document.getElementById('pEmail').value=currentUser.email;
+  document.getElementById('pAvatarUrl').value=currentUser.avatar;
+  document.getElementById('pBio').value='';
   document.getElementById('profileModal').classList.add('show');
 }
-function saveProfile(){
-  myProfile={name:document.getElementById('pName').value||'Gudu',email:document.getElementById('pEmail').value,bio:document.getElementById('pBio').value,avatar:document.getElementById('pAvatarUrl').value||myProfile.avatar};
-  save(); renderUsers(); closeModal('profileModal'); alert('Profile Saved!');
+async function saveProfile(){
+  currentUser.name=document.getElementById('pName').value;
+  currentUser.avatar=document.getElementById('pAvatarUrl').value||currentUser.avatar;
+  localStorage.setItem('gudu_current_user', JSON.stringify(currentUser));
+  if(firebaseReady) await db.collection('users').doc(currentUser.uid).set({name:currentUser.name, avatar:currentUser.avatar}, {merge:true});
+  document.getElementById('myName').innerText=currentUser.name;
+  document.getElementById('myAvatar').src=currentUser.avatar;
+  closeModal('profileModal');
 }
 function closeModal(id){document.getElementById(id).classList.remove('show')}
-function viewUserProfile(){ if(currentUser) alert(currentUser.name+'\nFollowing: '+(currentUser.following?'Yes':'No')+'\nBio: Gudu Chat User'); }
+
+// --- CALLS - WebRTC Real Camera ---
 let stream=null;
 async function startCall(type){
-  if(!currentUser) return;
-  document.getElementById('callTitle').innerText=type==='video'?'Video Call - '+currentUser.name:'Voice Call - '+currentUser.name;
+  if(!activeChat) return;
+  document.getElementById('callTitle').innerText=(type==='video'?'Video':'Voice')+' Call - '+activeChat.name;
   document.getElementById('callModal').classList.add('show');
   try{
     stream=await navigator.mediaDevices.getUserMedia({video:type==='video',audio:true});
     document.getElementById('localVideo').srcObject=stream;
-  }catch(e){ alert('Camera/Mic permission do - browser me allow karo'); }
+  }catch(e){ alert('Camera/Mic permission allow karo'); }
 }
 function endCall(){ if(stream) stream.getTracks().forEach(t=>t.stop()); document.getElementById('callModal').classList.remove('show'); }
-function toggleMic(btn){ btn.style.background=btn.style.background==='rgb(234, 0, 56)'?'#2a3942':'#ea0038'; }
-function toggleCam(btn){ btn.style.background=btn.style.background==='rgb(234, 0, 56)'?'#2a3942':'#ea0038'; }
-function startVoiceNote(){ alert('Voice Note Recording - Mic permission ke baad start hoga. Is demo me text bhejo.'); }
+
+// Auto login if already logged in
+let saved=localStorage.getItem('gudu_current_user');
+if(saved){ loginSuccess(JSON.parse(saved)); }
 renderUsers();
 </script>
 </body>
