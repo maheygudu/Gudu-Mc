@@ -3,20 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GUDU CHAT</title>
+<title>GUDU CHAT - Realtime</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
 body{background:#0b141a;color:#e9edef;height:100vh;overflow:hidden}
 button{cursor:pointer;border:none}
-/* AVATAR - LETTER STYLE */
 .avatar-letter{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#00a884,#00d9a5);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px;color:#fff;flex-shrink:0;cursor:pointer;overflow:hidden}
 .avatar-letter img{width:100%;height:100%;object-fit:cover}
 .avatar-letter.big{width:72px;height:72px;font-size:32px;border:3px solid white}
 .avatar-letter.huge{width:100px;height:100px;font-size:44px;border:4px solid white}
 .avatar-letter.mid{width:50px;height:50px;font-size:20px}
 .avatar-letter.small{width:48px;height:48px;font-size:19px}
-/* LOGIN */
 #loginScreen{position:fixed;inset:0;background:linear-gradient(135deg,#0b141a,#0f2a1e,#0b141a);display:flex;align-items:center;justify-content:center;z-index:200;padding:20px}
 .login-box{background:#111b21;width:100%;max-width:440px;border-radius:24px;padding:32px;text-align:center;border:1px solid rgba(255,255,255,.1)}
 .login-logo{width:80px;height:80px;background:linear-gradient(135deg,#00a884,#00d9a5);border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:38px;margin:0 auto 16px}
@@ -29,11 +27,9 @@ button{cursor:pointer;border:none}
 .login-box input{width:100%;background:#202c33;border:1px solid #2a3942;color:white;padding:13px;border-radius:12px;margin-bottom:10px;outline:none}
 .email-btn{width:100%;background:#00a884;color:#fff;padding:14px;border-radius:12px;font-weight:700}
 #loginError{color:#ff6b6b;font-size:12px;margin-top:10px;display:none}
-/* WELCOME */
 #welcomeScreen{position:fixed;inset:0;background:linear-gradient(135deg,#00a884,#00d9a5);display:none;align-items:center;justify-content:center;z-index:300;text-align:center;color:white;padding:20px}
 #welcomeScreen.show{display:flex}
 .welcome-content h1{font-size:34px;margin:14px 0 8px}
-/* APP */
 #app{display:none;height:100vh}
 #app.show{display:flex}
 .sidebar{width:360px;background:#111b21;border-right:1px solid #222d34;display:flex;flex-direction:column;flex-shrink:0}
@@ -53,7 +49,6 @@ button{cursor:pointer;border:none}
 .user .info p{font-size:13px;color:#8696a0;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .follow-btn{background:#00a884;color:#fff;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700}
 .follow-btn.following{background:#374045;color:#aebac1}
-/* DASHBOARD */
 .chat-area{flex:1;display:flex;flex-direction:column;background:#0b141a;overflow-y:auto}
 .dashboard{padding:28px;max-width:800px;margin:0 auto;width:100%}
 .dash-header{background:linear-gradient(135deg,#00a884,#00d9a5);border-radius:20px;padding:24px;display:flex;gap:18px;align-items:center;color:white}
@@ -70,16 +65,11 @@ button{cursor:pointer;border:none}
 .friend-card{background:#111b21;border:1px solid #222d34;border-radius:14px;padding:14px;display:flex;gap:12px;align-items:center;margin-bottom:10px;cursor:pointer}
 .friend-card:hover{border-color:#00a884}
 .friend-card .f-info{flex:1}
-.friend-card .f-info b{font-size:14px}
-.friend-card .f-info p{font-size:12px;color:#8696a0}
 .chat-btn{background:#00a884;color:#fff;padding:8px 16px;border-radius:20px;font-size:12px;font-weight:700}
-/* PROFILE MODAL - NEW */
 .profile-preview-wrap{text-align:center;margin-bottom:16px}
-.profile-preview-wrap .avatar-letter{margin:0 auto}
 .upload-btn{display:inline-block;margin-top:12px;background:#00a884;color:#fff;padding:10px 18px;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer}
 .upload-btn input{display:none}
 .remove-photo{margin-top:8px;background:transparent;color:#ff6b6b;font-size:12px;cursor:pointer}
-/* CHAT */
 .chat-header{padding:10px 16px;background:#202c33;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:10}
 .chat-header .h-info{flex:1}
 .call-btns{display:flex;gap:6px}
@@ -119,7 +109,7 @@ button{cursor:pointer;border:none}
     <input id="nameInput" placeholder="Enter your Name">
     <button class="email-btn" onclick="loginWithEmail()">Continue with Email →</button>
     <p id="loginError"></p>
-    <p style="margin-top:14px;font-size:11px;color:#666">Project: gudu-mc-97807 • Secured by Firebase</p>
+    <p style="margin-top:14px;font-size:11px;color:#666">Realtime Database • gudu-mc-97807</p>
   </div>
 </div>
 
@@ -129,7 +119,6 @@ button{cursor:pointer;border:none}
     <div id="welcomeAvatarWrap"></div>
     <h1 id="welcomeTitle">Welcome!</h1>
     <p id="welcomeSub">Loading your dashboard...</p>
-    <p style="margin-top:16px;font-size:13px;background:rgba(0,0,0,.2);padding:10px 18px;border-radius:20px;display:inline-block">Opening Dashboard...</p>
   </div>
 </div>
 
@@ -157,23 +146,18 @@ button{cursor:pointer;border:none}
       <div class="dash-grid">
         <div class="stat-card"><h3 id="statFriends">0</h3><p>FRIENDS</p></div>
         <div class="stat-card"><h3 id="statChats">0</h3><p>CHATS</p></div>
-        <div class="stat-card"><h3>Online</h3><p>STATUS</p></div>
+        <div class="stat-card"><h3 id="dbStatus">...</h3><p>DATABASE</p></div>
       </div>
       <div class="quick-actions">
         <button class="green" onclick="addUser()">+ New Chat</button>
         <button onclick="openProfile()">📸 Change Profile Photo</button>
-        <button onclick="alert('Invite Link Copied! Share this website link with friends.')">🔗 Invite Friends</button>
+        <button onclick="alert('Invite Link Copied!')">🔗 Invite Friends</button>
         <button onclick="showDashboard()">🔄 Refresh</button>
       </div>
       <div class="section-title">Your Friends & People</div>
       <div id="dashFriends"></div>
-      <div class="section-title">How to use?</div>
-      <div style="background:#111b21;border:1px solid #222d34;border-radius:14px;padding:16px;font-size:13px;line-height:1.8;color:#aebac1">
-        1. Your friend must login with Google on same link<br>
-        2. After login, they will appear in your list automatically<br>
-        3. Click on them → Chat, Voice Call, Video Call<br>
-        4. Click on your profile photo to change it from Gallery
-      </div>
+      <div class="section-title">Database Status</div>
+      <div id="dbInfo" style="background:#111b21;border:1px solid #222d34;border-radius:14px;padding:16px;font-size:13px;line-height:1.8;color:#aebac1">Connecting to Realtime Database...</div>
     </div>
 
     <div id="chatBox" style="display:none;flex:1;flex-direction:column">
@@ -195,7 +179,6 @@ button{cursor:pointer;border:none}
   </div>
 </div>
 
-<!-- PROFILE MODAL - PHOTO UPLOAD FROM GALLERY -->
 <div class="modal" id="profileModal">
   <div class="modal-box">
     <h2 style="margin-bottom:4px">Your Profile</h2>
@@ -206,11 +189,10 @@ button{cursor:pointer;border:none}
         <input type="file" id="photoInput" accept="image/*" onchange="handlePhotoUpload(event)">
       </label>
       <div><button class="remove-photo" onclick="removePhoto()">Remove Photo</button></div>
-      <p style="font-size:11px;color:#666;margin-top:8px">Photo will be saved on this device + Firebase</p>
     </div>
     <input id="pName" placeholder="Your Name">
     <input id="pEmail" placeholder="Gmail" disabled>
-    <input id="pBio" placeholder="Bio - e.g. Hey, I am using Gudu Chat">
+    <input id="pBio" placeholder="Bio">
     <button class="big-btn" onclick="saveProfile()">Save Profile</button>
     <button class="big-btn" style="background:#2a3942;margin-top:8px" onclick="closeModal('profileModal')">Close</button>
   </div>
@@ -230,11 +212,13 @@ button{cursor:pointer;border:none}
 
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
 <script>
+// ===== TERA REALTIME DATABASE CONFIG =====
 const firebaseConfig = {
   apiKey: "AIzaSyDnRBlB6nrL8YzJkWRN3sLUbTiviyz8Eds",
   authDomain: "gudu-mc-97807.firebaseapp.com",
+  databaseURL: "https://gudu-mc-97807-default-rtdb.firebaseio.com",
   projectId: "gudu-mc-97807",
   storageBucket: "gudu-mc-97807.firebasestorage.app",
   messagingSenderId: "326773708494",
@@ -243,59 +227,33 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
-const db = firebase.firestore();
+const rtdb = firebase.database();
+// =========================================
 
 let currentUser=null, users=[], chats={}, currentTab='all', activeChat=null;
-let tempPhoto = null; // new uploaded photo
+let tempPhoto=null;
 
-// ===== AVATAR HELPER - NO DEFAULT PHOTO =====
 function getInitial(name){ return name ? name.trim().charAt(0).toUpperCase() : '?'; }
-function getColor(name){
-  const colors=['#00a884','#7C3AED','#DB2777','#EA580C','#0891B2','#16A34A','#DC2626','#2563EB'];
-  let sum=0; for(let c of (name||'?')) sum+=c.charCodeAt(0);
-  return colors[sum % colors.length];
-}
+function getColor(name){ const colors=['#00a884','#7C3AED','#DB2777','#EA580C','#0891B2','#16A34A','#DC2626','#2563EB']; let sum=0; for(let c of (name||'?')) sum+=c.charCodeAt(0); return colors[sum % colors.length]; }
 function avatarHTML(name, photo, sizeClass){
-  // Agar photo nahi hai to LETTER dikhega, koi default image nahi
-  if(photo && photo.length>10){
-    return `<div class="avatar-letter ${sizeClass}"><img src="${photo}"></div>`;
-  } else {
-    return `<div class="avatar-letter ${sizeClass}" style="background:${getColor(name)}">${getInitial(name)}</div>`;
-  }
+  if(photo && photo.length>10){ return `<div class="avatar-letter ${sizeClass}"><img src="${photo}"></div>`; }
+  else { return `<div class="avatar-letter ${sizeClass}" style="background:${getColor(name)}">${getInitial(name)}</div>`; }
 }
 function renderAllAvatars(){
   if(!currentUser) return;
   document.getElementById('myAvatarWrap').innerHTML = avatarHTML(currentUser.name, currentUser.avatar, '');
   document.getElementById('dashAvatarWrap').innerHTML = avatarHTML(currentUser.name, currentUser.avatar, 'big');
   document.getElementById('welcomeAvatarWrap').innerHTML = avatarHTML(currentUser.name, currentUser.avatar, 'huge');
-  if(activeChat){
-    document.getElementById('chatAvatarWrap').innerHTML = avatarHTML(activeChat.name, activeChat.avatar, 'mid');
-  }
+  if(activeChat){ document.getElementById('chatAvatarWrap').innerHTML = avatarHTML(activeChat.name, activeChat.avatar, 'mid'); }
 }
-
-// ===== PHOTO UPLOAD FROM GALLERY =====
 function handlePhotoUpload(event){
-  const file = event.target.files[0];
-  if(!file) return;
-  if(file.size > 2*1024*1024){ alert("Photo too large! Please choose photo under 2MB"); return; }
+  const file = event.target.files[0]; if(!file) return;
+  if(file.size > 800*1024){ alert("Photo too large! Realtime DB me 800KB se chhoti photo lo"); return; }
   const reader = new FileReader();
-  reader.onload = function(e){
-    tempPhoto = e.target.result; // base64
-    // Preview update
-    document.getElementById('profilePreview').innerHTML = avatarHTML(currentUser.name, tempPhoto, 'huge');
-    // Live preview in header also
-    currentUser.avatar = tempPhoto;
-    renderAllAvatars();
-  };
+  reader.onload = function(e){ tempPhoto = e.target.result; document.getElementById('profilePreview').innerHTML = avatarHTML(currentUser.name, tempPhoto, 'huge'); currentUser.avatar = tempPhoto; renderAllAvatars(); };
   reader.readAsDataURL(file);
 }
-function removePhoto(){
-  tempPhoto = "";
-  currentUser.avatar = "";
-  document.getElementById('profilePreview').innerHTML = avatarHTML(currentUser.name, "", 'huge');
-  renderAllAvatars();
-}
-
+function removePhoto(){ tempPhoto=""; currentUser.avatar=""; document.getElementById('profilePreview').innerHTML = avatarHTML(currentUser.name, "", 'huge'); renderAllAvatars(); }
 function showError(msg){ let e=document.getElementById('loginError'); e.style.display='block'; e.innerText=msg; }
 function showWelcome(profile, cb){
   document.getElementById('loginScreen').style.display='none';
@@ -303,26 +261,21 @@ function showWelcome(profile, cb){
   renderAllAvatars();
   document.getElementById('welcomeTitle').innerText='Welcome, '+(profile.name||'Friend')+'!';
   document.getElementById('welcomeSub').innerText='Logged in as '+profile.email;
-  setTimeout(()=>{
-    document.getElementById('welcomeScreen').classList.remove('show');
-    document.getElementById('app').classList.add('show');
-    document.getElementById('chatArea').classList.add('open');
-    if(cb) cb();
-  }, 2200);
+  setTimeout(()=>{ document.getElementById('welcomeScreen').classList.remove('show'); document.getElementById('app').classList.add('show'); document.getElementById('chatArea').classList.add('open'); if(cb) cb(); }, 2000);
 }
 
+// ===== LOGIN + SAVE TO RTDB =====
 async function loginWithGoogle(){
   try{
     const provider = new firebase.auth.GoogleAuthProvider();
     const result = await auth.signInWithPopup(provider);
     const u = result.user;
-    // Google wali photo ko pehli baar use karo, agar user ne apni photo change ki hogi to wahi rahegi
-    // Lekin is baar hum Google photo ko force nahi karenge agar pehle se custom photo hai
     let saved = localStorage.getItem('gudu_current_user');
     let oldPhoto = saved ? JSON.parse(saved).avatar : null;
-    let finalPhoto = oldPhoto || u.photoURL || ""; // Agar pehle custom photo hai to wahi, warna Google wali, warna khali
+    let finalPhoto = oldPhoto || u.photoURL || "";
     let profile={name:u.displayName, email:u.email, avatar:finalPhoto, uid:u.uid};
-    try{ await db.collection('users').doc(u.uid).set({name:u.displayName,email:u.email,avatar:finalPhoto,lastSeen:Date.now()}, {merge:true}); }catch(e){ console.log(e); }
+    // RTDB me user save karo - yahi se data banega, null khatam hoga
+    await rtdb.ref('users/' + u.uid).set({name:u.displayName, email:u.email, avatar:finalPhoto, lastSeen:Date.now(), online:true});
     localStorage.setItem('gudu_current_user', JSON.stringify(profile));
     currentUser=profile;
     showWelcome(profile, ()=>{ setupUI(profile); loadRealUsers(); });
@@ -332,13 +285,13 @@ function loginWithEmail(){
   let email=document.getElementById('emailInput').value.trim();
   let name=document.getElementById('nameInput').value.trim();
   if(!email || !name){ showError("Please enter Gmail and Name"); return; }
-  // Email login pe koi photo nahi hogi - sirf letter dikhega
   let saved = localStorage.getItem('gudu_current_user');
   let oldPhoto = saved && JSON.parse(saved).email===email ? JSON.parse(saved).avatar : "";
-  let profile={name, email, avatar:oldPhoto||"", uid:'local_'+email};
+  let profile={name, email, avatar:oldPhoto||"", uid:'local_'+email.replace(/[^a-zA-Z0-9]/g,'_')};
+  rtdb.ref('users/' + profile.uid).set({name, email, avatar:oldPhoto||"", lastSeen:Date.now(), online:true});
   localStorage.setItem('gudu_current_user', JSON.stringify(profile));
   currentUser=profile;
-  showWelcome(profile, ()=>{ setupUI(profile); });
+  showWelcome(profile, ()=>{ setupUI(profile); loadRealUsers(); });
 }
 function setupUI(profile){
   document.getElementById('myName').innerText=profile.name;
@@ -352,17 +305,26 @@ function setupUI(profile){
 }
 function logout(){ localStorage.removeItem('gudu_current_user'); auth.signOut().catch(()=>{}); location.reload(); }
 
+// ===== REALTIME LISTENER - USERS =====
 function loadRealUsers(){
-  db.collection('users').onSnapshot(snap=>{
+  rtdb.ref('users').on('value', (snap)=>{
+    let data = snap.val();
+    document.getElementById('dbStatus').innerText = data ? 'Connected' : 'Empty';
+    document.getElementById('dbInfo').innerHTML = data ? `✅ Database Connected!<br>Total Users in DB: ${Object.keys(data).length}<br>Your UID: ${currentUser.uid}` : `Database abhi khali hai (null).<br>Tu pehla user hai, jab dost login karega to yahan dikhega.`;
     users=[];
-    snap.forEach(doc=>{
-      let d=doc.data();
-      if(d.email !== currentUser.email){
-        users.push({id:doc.id, name:d.name, email:d.email, avatar:d.avatar||"", last:'Tap to chat', following:false, online:true});
-      }
-    });
+    if(data){
+      Object.keys(data).forEach(uid=>{
+        let d=data[uid];
+        if(d.email !== currentUser.email){
+          users.push({id:uid, name:d.name, email:d.email, avatar:d.avatar||"", last:'Tap to chat', following:false, online:true});
+        }
+      });
+    }
     renderUsers(); renderDashboardFriends();
-  }, err=>{ console.log(err); renderUsers(); renderDashboardFriends(); });
+  }, (err)=>{
+    document.getElementById('dbStatus').innerText='Error';
+    document.getElementById('dbInfo').innerHTML='❌ Database Error: '+err.message+'<br><br>Rules me jaake { ".read": true, ".write": true } daalo aur Publish karo.';
+  });
 }
 function renderDashboardFriends(){
   let el=document.getElementById('dashFriends');
@@ -381,23 +343,11 @@ function renderUsers(){
     if(q && !(u.name.toLowerCase().includes(q) || u.email.toLowerCase().includes(q))) return false;
     return true;
   });
-  if(list.length===0){
-    document.getElementById('userList').innerHTML=`<div style="padding:30px;text-align:center;color:#8696a0;font-size:13px;line-height:1.7"><b style="color:white">No Users Yet</b><br>Friend login karega to yahan aayega.</div>`;
-    return;
-  }
-  document.getElementById('userList').innerHTML=list.map(u=>`
-    <div class="user ${activeChat?.id===u.id?'active':''}" onclick="openChat('${u.id}')">
-      ${avatarHTML(u.name,u.avatar,'mid')}<div class="info"><b>${u.name}</b><p>${u.email}</p><p>${u.last}</p></div>
-      <button class="follow-btn ${u.following?'following':''}" onclick="event.stopPropagation();toggleFollow('${u.id}')">${u.following?'Following':'Follow'}</button>
-    </div>`).join('');
+  if(list.length===0){ document.getElementById('userList').innerHTML=`<div style="padding:30px;text-align:center;color:#8696a0;font-size:13px"><b style="color:white">No Users Yet</b><br>Friend login karega to yahan aayega.</div>`; return; }
+  document.getElementById('userList').innerHTML=list.map(u=>`<div class="user ${activeChat?.id===u.id?'active':''}" onclick="openChat('${u.id}')">${avatarHTML(u.name,u.avatar,'mid')}<div class="info"><b>${u.name}</b><p>${u.email}</p><p>${u.last}</p></div><button class="follow-btn ${u.following?'following':''}" onclick="event.stopPropagation();toggleFollow('${u.id}')">${u.following?'Following':'Follow'}</button></div>`).join('');
 }
 function setTab(t,el){currentTab=t; document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active')); el.classList.add('active'); renderUsers();}
-function showDashboard(){
-  document.getElementById('dashboardView').style.display='block';
-  document.getElementById('chatBox').style.display='none';
-  document.getElementById('chatArea').classList.add('open');
-  renderDashboardFriends();
-}
+function showDashboard(){ document.getElementById('dashboardView').style.display='block'; document.getElementById('chatBox').style.display='none'; document.getElementById('chatArea').classList.add('open'); renderDashboardFriends(); }
 function addUser(){
   let email=prompt('Enter friend Gmail:'); if(!email) return;
   let name=prompt('Enter their Name:'); if(!name) return;
@@ -406,14 +356,12 @@ function addUser(){
   renderUsers(); renderDashboardFriends(); openChat(id);
 }
 function openChat(id){
-  activeChat=users.find(u=>u.id===id);
-  if(!activeChat) return;
+  activeChat=users.find(u=>u.id===id); if(!activeChat) return;
   document.getElementById('dashboardView').style.display='none';
   document.getElementById('chatBox').style.display='flex';
   document.getElementById('chatArea').classList.add('open');
   document.getElementById('chatName').innerText=activeChat.name;
-  renderAllAvatars();
-  renderMsgs(); renderUsers(); listenMessages();
+  renderAllAvatars(); renderMsgs(); renderUsers(); listenMessages();
 }
 function renderMsgs(){
   if(!activeChat) return;
@@ -425,54 +373,27 @@ function renderMsgs(){
 async function sendMsg(){
   let inp=document.getElementById('msgInput'); if(!inp.value.trim() || !activeChat) return;
   let text=inp.value; inp.value='';
-  let msg={text, me:true, time:new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})};
-  if(!chats[activeChat.id]) chats[activeChat.id]=[];
-  chats[activeChat.id].push(msg);
-  activeChat.last='You: '+text;
-  renderMsgs(); renderUsers();
-  try{
-    let chatId=[currentUser.uid, activeChat.id].sort().join('_');
-    await db.collection('chats').doc(chatId).collection('messages').add({text, from:currentUser.uid, fromName:currentUser.name, to:activeChat.id, time:Date.now()});
-  }catch(e){ console.log(e); }
+  let chatId=[currentUser.uid, activeChat.id].sort().join('_');
+  await rtdb.ref('chats/' + chatId).push({text, from:currentUser.uid, fromName:currentUser.name, to:activeChat.id, time:Date.now()});
 }
 function listenMessages(){
   if(!activeChat) return;
   let chatId=[currentUser.uid, activeChat.id].sort().join('_');
-  db.collection('chats').doc(chatId).collection('messages').orderBy('time').onSnapshot(snap=>{
-    chats[activeChat.id]=[];
-    snap.forEach(doc=>{
-      let d=doc.data();
-      chats[activeChat.id].push({text:d.text, me:d.from===currentUser.uid, time:new Date(d.time).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})});
-    });
+  rtdb.ref('chats/' + chatId).on('value', (snap)=>{
+    let data=snap.val(); chats[activeChat.id]=[];
+    if(data){ Object.values(data).sort((a,b)=>a.time-b.time).forEach(d=>{ chats[activeChat.id].push({text:d.text, me:d.from===currentUser.uid, time:new Date(d.time).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}); }); }
     renderMsgs();
-  }, err=>{ console.log(err); });
+  });
 }
-function toggleFollow(id){
-  let u=users.find(x=>x.id===id); u.following=!u.following;
-  try{ db.collection('users').doc(currentUser.uid).collection('following').doc(id).set({following:u.following}); }catch(e){}
-  renderUsers();
-}
-function openProfile(){
-  tempPhoto = null;
-  document.getElementById('pName').value=currentUser.name;
-  document.getElementById('pEmail').value=currentUser.email;
-  document.getElementById('pBio').value=currentUser.bio||'';
-  document.getElementById('profilePreview').innerHTML = avatarHTML(currentUser.name, currentUser.avatar, 'huge');
-  document.getElementById('photoInput').value='';
-  document.getElementById('profileModal').classList.add('show');
-}
+function toggleFollow(id){ let u=users.find(x=>x.id===id); u.following=!u.following; rtdb.ref('following/' + currentUser.uid + '/' + id).set(u.following); renderUsers(); }
+function openProfile(){ tempPhoto=null; document.getElementById('pName').value=currentUser.name; document.getElementById('pEmail').value=currentUser.email; document.getElementById('pBio').value=currentUser.bio||''; document.getElementById('profilePreview').innerHTML = avatarHTML(currentUser.name, currentUser.avatar, 'huge'); document.getElementById('photoInput').value=''; document.getElementById('profileModal').classList.add('show'); }
 async function saveProfile(){
-  // Agar nayi photo upload ki hai to wahi save hogi
-  if(tempPhoto !== null){
-    currentUser.avatar = tempPhoto;
-  }
+  if(tempPhoto !== null){ currentUser.avatar = tempPhoto; }
   currentUser.name=document.getElementById('pName').value || currentUser.name;
   currentUser.bio=document.getElementById('pBio').value;
   localStorage.setItem('gudu_current_user', JSON.stringify(currentUser));
-  try{ await db.collection('users').doc(currentUser.uid).set({name:currentUser.name, avatar:currentUser.avatar}, {merge:true}); }catch(e){}
-  setupUI(currentUser);
-  closeModal('profileModal');
-  alert("Profile Saved!");
+  await rtdb.ref('users/' + currentUser.uid).update({name:currentUser.name, avatar:currentUser.avatar});
+  setupUI(currentUser); closeModal('profileModal'); alert("Profile Saved!");
 }
 function closeModal(id){document.getElementById(id).classList.remove('show')}
 let stream=null;
