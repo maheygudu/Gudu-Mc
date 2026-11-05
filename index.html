@@ -3,116 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GUDU CHAT - Connect With The World</title>
+<title>GUDU CHAT</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
 body{background:#0b141a;color:#e9edef;height:100vh;overflow:hidden}
 button{cursor:pointer;border:none}
-/* ===== LOGIN SCREEN - CREATIVE ===== */
-#loginScreen{position:fixed;inset:0;background:linear-gradient(135deg,#0b141a 0%,#0f2a1e 50%,#0b141a 100%);display:flex;align-items:center;justify-content:center;z-index:200;padding:20px;overflow:hidden}
-#loginScreen::before{content:'';position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(0,168,132,.25),transparent);top:-100px;right:-100px;animation:pulseGlow 4s infinite alternate}
-#loginScreen::after{content:'';position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(0,168,132,.15),transparent);bottom:-100px;left:-100px;animation:pulseGlow 5s infinite alternate-reverse}
-@keyframes pulseGlow{from{transform:scale(1);opacity:.6}to{transform:scale(1.2);opacity:1}}
-.floating-emoji{position:absolute;font-size:32px;animation:floatUp 6s ease-in-out infinite;opacity:.4;z-index:0}
-@keyframes floatUp{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-20px) rotate(10deg)}}
-.login-box{background:rgba(17,27,33,.95);backdrop-filter:blur(20px);width:100%;max-width:440px;border-radius:24px;padding:36px;text-align:center;border:1px solid rgba(255,255,255,.1);box-shadow:0 30px 60px rgba(0,0,0,.5);position:relative;z-index:2;animation:slideIn .6s ease}
-@keyframes slideIn{from{opacity:0;transform:translateY(30px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
-.login-logo{width:80px;height:80px;background:linear-gradient(135deg,#00a884,#00d9a5);border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:38px;margin:0 auto 16px;box-shadow:0 10px 30px rgba(0,168,132,.4);animation:logoBounce 2.5s infinite}
-@keyframes logoBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-.login-box h1{font-size:30px;font-weight:900;letter-spacing:-1px}
+/* AVATAR - LETTER STYLE */
+.avatar-letter{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#00a884,#00d9a5);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px;color:#fff;flex-shrink:0;cursor:pointer;overflow:hidden}
+.avatar-letter img{width:100%;height:100%;object-fit:cover}
+.avatar-letter.big{width:72px;height:72px;font-size:32px;border:3px solid white}
+.avatar-letter.huge{width:100px;height:100px;font-size:44px;border:4px solid white}
+.avatar-letter.mid{width:50px;height:50px;font-size:20px}
+.avatar-letter.small{width:48px;height:48px;font-size:19px}
+/* LOGIN */
+#loginScreen{position:fixed;inset:0;background:linear-gradient(135deg,#0b141a,#0f2a1e,#0b141a);display:flex;align-items:center;justify-content:center;z-index:200;padding:20px}
+.login-box{background:#111b21;width:100%;max-width:440px;border-radius:24px;padding:32px;text-align:center;border:1px solid rgba(255,255,255,.1)}
+.login-logo{width:80px;height:80px;background:linear-gradient(135deg,#00a884,#00d9a5);border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:38px;margin:0 auto 16px}
+.login-box h1{font-size:30px;font-weight:900}
 .login-box h1 span{color:#00a884}
-.login-box .tagline{color:#8696a0;font-size:14px;line-height:1.6;margin:10px 0 24px}
-.feature-row{display:flex;gap:8px;justify-content:center;margin-bottom:22px;flex-wrap:wrap}
-.feature-row span{background:#202c33;padding:7px 12px;border-radius:20px;font-size:11px;font-weight:600;color:#cbd5d8}
-.google-btn{width:100%;background:#fff;color:#111;padding:15px;border-radius:14px;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;gap:10px;transition:.2s;box-shadow:0 8px 20px rgba(255,255,255,.1)}
-.google-btn:hover{transform:translateY(-2px);box-shadow:0 12px 25px rgba(255,255,255,.2)}
+.login-box p{color:#8696a0;font-size:14px;line-height:1.6;margin:10px 0 20px}
+.google-btn{width:100%;background:#fff;color:#111;padding:15px;border-radius:14px;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;gap:10px}
 .google-btn img{width:20px}
-.divider{margin:20px 0;color:#8696a0;font-size:12px;display:flex;align-items:center;gap:12px}
-.divider::before,.divider::after{content:'';flex:1;height:1px;background:#2a3942}
-.login-box input{width:100%;background:#202c33;border:1px solid #2a3942;color:white;padding:13px 14px;border-radius:12px;margin-bottom:10px;outline:none;font-size:14px}
-.login-box input:focus{border-color:#00a884}
-.email-btn{width:100%;background:#00a884;color:#fff;padding:14px;border-radius:12px;font-weight:700;font-size:14px}
-.email-btn:hover{background:#00b894}
-.note{margin-top:16px;font-size:11px;color:#666;line-height:1.6}
-.note b{color:#8696a0}
-/* ===== WELCOME SCREEN ===== */
-#welcomeScreen{position:fixed;inset:0;background:linear-gradient(135deg,#00a884,#00d9a5);display:none;align-items:center;justify-content:center;z-index:300;text-align:center;color:white;padding:20px;overflow:hidden}
+.divider{margin:18px 0;color:#8696a0;font-size:12px}
+.login-box input{width:100%;background:#202c33;border:1px solid #2a3942;color:white;padding:13px;border-radius:12px;margin-bottom:10px;outline:none}
+.email-btn{width:100%;background:#00a884;color:#fff;padding:14px;border-radius:12px;font-weight:700}
+#loginError{color:#ff6b6b;font-size:12px;margin-top:10px;display:none}
+/* WELCOME */
+#welcomeScreen{position:fixed;inset:0;background:linear-gradient(135deg,#00a884,#00d9a5);display:none;align-items:center;justify-content:center;z-index:300;text-align:center;color:white;padding:20px}
 #welcomeScreen.show{display:flex}
-.welcome-content{animation:welcomePop .6s ease;position:relative;z-index:2}
-@keyframes welcomePop{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
-.welcome-content .big-emoji{font-size:70px;animation:celebrate 1s infinite}
-@keyframes celebrate{0%,100%{transform:rotate(-8deg) scale(1)}50%{transform:rotate(8deg) scale(1.15)}}
-.welcome-content h1{font-size:38px;font-weight:900;margin:14px 0 8px;line-height:1.2}
-.welcome-content p{font-size:16px;opacity:.9;line-height:1.6}
-.welcome-avatar{width:100px;height:100px;border-radius:50%;border:4px solid white;object-fit:cover;margin:0 auto;box-shadow:0 15px 30px rgba(0,0,0,.3)}
-.confetti{position:absolute;width:10px;height:10px;top:-10px;animation:fall linear infinite}
-@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
-/* ===== APP ===== */
+.welcome-content h1{font-size:34px;margin:14px 0 8px}
+/* APP */
 #app{display:none;height:100vh}
 #app.show{display:flex}
-.sidebar{width:360px;background:#111b21;border-right:1px solid #222d34;display:flex;flex-direction:column}
+.sidebar{width:360px;background:#111b21;border-right:1px solid #222d34;display:flex;flex-direction:column;flex-shrink:0}
 .my-profile{padding:14px 16px;background:#202c33;display:flex;align-items:center;gap:12px}
-.my-profile img{width:44px;height:44px;border-radius:50%;object-fit:cover;cursor:pointer}
 .my-profile b{font-size:15px}
 .my-profile span{font-size:12px;color:#8696a0}
 .my-profile .actions{margin-left:auto;font-size:18px;display:flex;gap:12px}
 .search{margin:10px;background:#202c33;padding:10px 14px;border-radius:10px;display:flex;gap:10px}
-.search input{background:transparent;border:none;outline:none;color:white;width:100%;font-size:14px}
+.search input{background:transparent;border:none;outline:none;color:white;width:100%}
 .tabs{display:flex;padding:0 10px;gap:6px}
 .tabs button{flex:1;padding:9px;border-radius:20px;background:#202c33;color:#aaa;font-size:13px;font-weight:600}
 .tabs button.active{background:#00a884;color:#fff}
 .user-list{flex:1;overflow-y:auto}
 .user{padding:12px 16px;display:flex;gap:12px;align-items:center;cursor:pointer;border-bottom:1px solid #1a262e}
 .user:hover,.user.active{background:#2a3942}
-.user img{width:50px;height:50px;border-radius:50%;object-fit:cover}
 .user .info{flex:1;min-width:0}
 .user .info p{font-size:13px;color:#8696a0;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.follow-btn{background:#00a884;color:#fff;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700;flex-shrink:0}
+.follow-btn{background:#00a884;color:#fff;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700}
 .follow-btn.following{background:#374045;color:#aebac1}
-.empty-list{padding:40px 20px;text-align:center;color:#8696a0;font-size:13px;line-height:1.7}
-.empty-list b{color:white;font-size:15px}
-.chat-area{flex:1;display:flex;flex-direction:column;background:#0b141a}
-.chat-header{padding:10px 16px;background:#202c33;display:flex;align-items:center;gap:12px}
-.chat-header img{width:42px;height:42px;border-radius:50%;object-fit:cover}
+/* DASHBOARD */
+.chat-area{flex:1;display:flex;flex-direction:column;background:#0b141a;overflow-y:auto}
+.dashboard{padding:28px;max-width:800px;margin:0 auto;width:100%}
+.dash-header{background:linear-gradient(135deg,#00a884,#00d9a5);border-radius:20px;padding:24px;display:flex;gap:18px;align-items:center;color:white}
+.dash-header h2{font-size:22px;line-height:1.3}
+.dash-header p{font-size:13px;opacity:.9;margin-top:4px}
+.dash-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+.stat-card{background:#111b21;border:1px solid #222d34;border-radius:16px;padding:18px;text-align:center}
+.stat-card h3{font-size:26px;color:#00a884}
+.stat-card p{font-size:12px;color:#8696a0;margin-top:4px}
+.quick-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
+.quick-actions button{padding:16px;border-radius:14px;font-weight:700;font-size:14px;background:#202c33;color:white;border:1px solid #2a3942}
+.quick-actions button.green{background:#00a884;color:white}
+.section-title{font-size:15px;font-weight:700;margin:18px 0 12px}
+.friend-card{background:#111b21;border:1px solid #222d34;border-radius:14px;padding:14px;display:flex;gap:12px;align-items:center;margin-bottom:10px;cursor:pointer}
+.friend-card:hover{border-color:#00a884}
+.friend-card .f-info{flex:1}
+.friend-card .f-info b{font-size:14px}
+.friend-card .f-info p{font-size:12px;color:#8696a0}
+.chat-btn{background:#00a884;color:#fff;padding:8px 16px;border-radius:20px;font-size:12px;font-weight:700}
+/* PROFILE MODAL - NEW */
+.profile-preview-wrap{text-align:center;margin-bottom:16px}
+.profile-preview-wrap .avatar-letter{margin:0 auto}
+.upload-btn{display:inline-block;margin-top:12px;background:#00a884;color:#fff;padding:10px 18px;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer}
+.upload-btn input{display:none}
+.remove-photo{margin-top:8px;background:transparent;color:#ff6b6b;font-size:12px;cursor:pointer}
+/* CHAT */
+.chat-header{padding:10px 16px;background:#202c33;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:10}
 .chat-header .h-info{flex:1}
 .call-btns{display:flex;gap:6px}
 .call-btns button{width:42px;height:42px;border-radius:50%;background:#2a3942;color:#fff;font-size:18px}
-.messages{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:8px}
+.messages{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:8px;min-height:400px}
 .msg{max-width:65%;padding:9px 12px;border-radius:10px;font-size:14px;line-height:1.5}
 .msg.me{align-self:flex-end;background:#005c4b;border-top-right-radius:0}
 .msg.other{align-self:flex-start;background:#202c33;border-top-left-radius:0}
 .msg small{display:block;text-align:right;font-size:10px;color:#8696a0;margin-top:4px}
-.input-area{padding:10px 14px;background:#202c33;display:flex;gap:10px;align-items:center}
-.input-area input{flex:1;background:#2a3942;border:none;outline:none;color:white;padding:13px 16px;border-radius:25px;font-size:14px}
+.input-area{padding:10px 14px;background:#202c33;display:flex;gap:10px;align-items:center;position:sticky;bottom:0}
+.input-area input{flex:1;background:#2a3942;border:none;outline:none;color:white;padding:13px 16px;border-radius:25px}
 .input-area button{width:46px;height:46px;border-radius:50%;background:#00a884;color:white;font-size:18px}
-.empty-chat{margin:auto;text-align:center;color:#8696a0;padding:30px}
-.empty-chat h3{color:white;margin-bottom:8px}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;z-index:400;padding:16px}
 .modal.show{display:flex}
-.modal-box{background:#111b21;width:100%;max-width:420px;border-radius:16px;padding:24px}
+.modal-box{background:#111b21;width:100%;max-width:420px;border-radius:16px;padding:24px;max-height:90vh;overflow-y:auto}
 .modal-box input,.modal-box textarea{width:100%;background:#202c33;border:1px solid #2a3942;color:white;padding:12px;border-radius:10px;margin-bottom:12px;outline:none}
 .big-btn{width:100%;background:#00a884;color:white;padding:13px;border-radius:10px;font-weight:700}
 .video-box{width:100%;max-width:700px;background:#000;border-radius:16px;overflow:hidden;position:relative}
 .video-box video{width:100%;height:380px;object-fit:cover;background:#111}
 .video-controls{position:absolute;bottom:15px;left:0;right:0;display:flex;justify-content:center;gap:12px}
 .video-controls button{width:52px;height:52px;border-radius:50%;font-size:20px;color:white}
-@media(max-width:800px){.sidebar{width:100%} .chat-area{display:none} .chat-area.open{display:flex;position:fixed;inset:0;z-index:100}}
+@media(max-width:800px){.sidebar{width:100%} .chat-area{display:none} .chat-area.open{display:flex;position:fixed;inset:0;z-index:100} .dashboard{padding:16px}}
 </style>
 </head>
 <body>
 
-<!-- LOGIN -->
 <div id="loginScreen">
-  <span class="floating-emoji" style="top:15%;left:10%">💬</span>
-  <span class="floating-emoji" style="top:70%;left:85%;animation-delay:1s">📞</span>
-  <span class="floating-emoji" style="top:20%;right:12%;animation-delay:2s">📹</span>
-  <span class="floating-emoji" style="bottom:15%;left:15%;animation-delay:.5s">✨</span>
   <div class="login-box">
     <div class="login-logo">💬</div>
     <h1>GUDU <span>CHAT</span></h1>
-    <p class="tagline">Chat, Call & Connect with your friends.<br>Fast. Secure. Real-time.</p>
-    <div class="feature-row"><span>💬 Real Chats</span><span>📞 Voice Calls</span><span>📹 Video Calls</span><span>👥 Follow</span></div>
+    <p>Chat, Call & Connect with your friends.<br>Fast. Secure. Real-time.</p>
     <button class="google-btn" onclick="loginWithGoogle()">
       <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"> Continue with Google
     </button>
@@ -120,29 +118,27 @@ button{cursor:pointer;border:none}
     <input id="emailInput" type="email" placeholder="Enter your Gmail">
     <input id="nameInput" placeholder="Enter your Name">
     <button class="email-btn" onclick="loginWithEmail()">Continue with Email →</button>
-    <p class="note">By continuing, you agree to our Terms & Privacy Policy.<br><b>Project: gudu-mc-97807 • Secured by Firebase</b></p>
+    <p id="loginError"></p>
+    <p style="margin-top:14px;font-size:11px;color:#666">Project: gudu-mc-97807 • Secured by Firebase</p>
   </div>
 </div>
 
-<!-- WELCOME -->
 <div id="welcomeScreen">
-  <div id="confettiBox"></div>
   <div class="welcome-content">
-    <div class="big-emoji">🎉</div>
-    <img id="welcomeAvatar" class="welcome-avatar" src="">
+    <div style="font-size:60px">🎉</div>
+    <div id="welcomeAvatarWrap"></div>
     <h1 id="welcomeTitle">Welcome!</h1>
-    <p id="welcomeSub">Great to see you here.<br>Let's start chatting!</p>
-    <p style="margin-top:18px;font-size:13px;background:rgba(0,0,0,.2);padding:10px 18px;border-radius:20px;display:inline-block">✨ Loading your chats...</p>
+    <p id="welcomeSub">Loading your dashboard...</p>
+    <p style="margin-top:16px;font-size:13px;background:rgba(0,0,0,.2);padding:10px 18px;border-radius:20px;display:inline-block">Opening Dashboard...</p>
   </div>
 </div>
 
-<!-- APP -->
 <div id="app">
   <div class="sidebar">
     <div class="my-profile">
-      <img id="myAvatar" src="" onclick="openProfile()">
+      <div id="myAvatarWrap" onclick="openProfile()"></div>
       <div style="flex:1;min-width:0"><b id="myName">Loading...</b><br><span id="myBio">...</span></div>
-      <div class="actions"><span title="New Chat" onclick="addUser()">＋</span><span title="Logout" onclick="logout()">↪</span></div>
+      <div class="actions"><span onclick="showDashboard()">🏠</span><span onclick="addUser()">＋</span><span onclick="logout()">↪</span></div>
     </div>
     <div class="search"><span>🔍</span><input id="searchInput" placeholder="Search users by Gmail / Name" oninput="renderUsers()"></div>
     <div class="tabs">
@@ -153,19 +149,41 @@ button{cursor:pointer;border:none}
   </div>
 
   <div class="chat-area" id="chatArea">
-    <div class="empty-chat" id="emptyState">
-      <h3>Welcome to Gudu Chat 👋</h3>
-      <p>No chats yet.<br>Search a user or start a new chat.</p><br>
-      <button class="big-btn" style="width:auto;padding:12px 22px" onclick="addUser()">+ New Chat</button>
+    <div id="dashboardView" class="dashboard">
+      <div class="dash-header">
+        <div id="dashAvatarWrap"></div>
+        <div><h2 id="dashName">Welcome!</h2><p id="dashEmail">...</p><p id="dashTime">Have a great day!</p></div>
+      </div>
+      <div class="dash-grid">
+        <div class="stat-card"><h3 id="statFriends">0</h3><p>FRIENDS</p></div>
+        <div class="stat-card"><h3 id="statChats">0</h3><p>CHATS</p></div>
+        <div class="stat-card"><h3>Online</h3><p>STATUS</p></div>
+      </div>
+      <div class="quick-actions">
+        <button class="green" onclick="addUser()">+ New Chat</button>
+        <button onclick="openProfile()">📸 Change Profile Photo</button>
+        <button onclick="alert('Invite Link Copied! Share this website link with friends.')">🔗 Invite Friends</button>
+        <button onclick="showDashboard()">🔄 Refresh</button>
+      </div>
+      <div class="section-title">Your Friends & People</div>
+      <div id="dashFriends"></div>
+      <div class="section-title">How to use?</div>
+      <div style="background:#111b21;border:1px solid #222d34;border-radius:14px;padding:16px;font-size:13px;line-height:1.8;color:#aebac1">
+        1. Your friend must login with Google on same link<br>
+        2. After login, they will appear in your list automatically<br>
+        3. Click on them → Chat, Voice Call, Video Call<br>
+        4. Click on your profile photo to change it from Gallery
+      </div>
     </div>
+
     <div id="chatBox" style="display:none;flex:1;flex-direction:column">
       <div class="chat-header">
-        <span onclick="document.getElementById('chatArea').classList.remove('open')" style="cursor:pointer">←</span>
-        <img id="chatAvatar" src="">
-        <div class="h-info"><b id="chatName"></b><br><span id="chatStatus" style="font-size:12px;color:#00a884">Online</span></div>
+        <span onclick="showDashboard()" style="cursor:pointer">← Back</span>
+        <div id="chatAvatarWrap"></div>
+        <div class="h-info"><b id="chatName"></b><br><span style="font-size:12px;color:#00a884">Online</span></div>
         <div class="call-btns">
-          <button title="Voice Call" onclick="startCall('voice')">📞</button>
-          <button title="Video Call" onclick="startCall('video')">📹</button>
+          <button onclick="startCall('voice')">📞</button>
+          <button onclick="startCall('video')">📹</button>
         </div>
       </div>
       <div class="messages" id="messages"></div>
@@ -177,13 +195,22 @@ button{cursor:pointer;border:none}
   </div>
 </div>
 
+<!-- PROFILE MODAL - PHOTO UPLOAD FROM GALLERY -->
 <div class="modal" id="profileModal">
   <div class="modal-box">
-    <h2 style="margin-bottom:12px">Your Profile</h2>
+    <h2 style="margin-bottom:4px">Your Profile</h2>
+    <p style="color:#8696a0;font-size:12px;margin-bottom:16px">Tap on photo to change from Gallery</p>
+    <div class="profile-preview-wrap">
+      <div id="profilePreview"></div>
+      <label class="upload-btn">📸 Choose Photo from Gallery
+        <input type="file" id="photoInput" accept="image/*" onchange="handlePhotoUpload(event)">
+      </label>
+      <div><button class="remove-photo" onclick="removePhoto()">Remove Photo</button></div>
+      <p style="font-size:11px;color:#666;margin-top:8px">Photo will be saved on this device + Firebase</p>
+    </div>
     <input id="pName" placeholder="Your Name">
     <input id="pEmail" placeholder="Gmail" disabled>
-    <input id="pAvatarUrl" placeholder="Profile Photo URL">
-    <textarea id="pBio" placeholder="Bio" style="width:100%;background:#202c33;border:1px solid #2a3942;color:white;padding:12px;border-radius:10px;margin-bottom:12px;outline:none;resize:none"></textarea>
+    <input id="pBio" placeholder="Bio - e.g. Hey, I am using Gudu Chat">
     <button class="big-btn" onclick="saveProfile()">Save Profile</button>
     <button class="big-btn" style="background:#2a3942;margin-top:8px" onclick="closeModal('profileModal')">Close</button>
   </div>
@@ -194,8 +221,8 @@ button{cursor:pointer;border:none}
     <video id="localVideo" autoplay muted playsinline></video>
     <div style="position:absolute;top:14px;left:14px;background:rgba(0,0,0,.6);padding:8px 12px;border-radius:20px;font-size:13px"><span id="callTitle">Call</span></div>
     <div class="video-controls">
-      <button style="background:#2a3942" onclick="this.style.background=this.style.background==='rgb(234, 0, 56)'?'#2a3942':'#ea0038'">🎤</button>
-      <button style="background:#2a3942" onclick="this.style.background=this.style.background==='rgb(234, 0, 56)'?'#2a3942':'#ea0038'">📹</button>
+      <button style="background:#2a3942">🎤</button>
+      <button style="background:#2a3942">📹</button>
       <button style="background:#ea0038" onclick="endCall()">📞</button>
     </div>
   </div>
@@ -204,7 +231,6 @@ button{cursor:pointer;border:none}
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-
 <script>
 const firebaseConfig = {
   apiKey: "AIzaSyDnRBlB6nrL8YzJkWRN3sLUbTiviyz8Eds",
@@ -219,34 +245,70 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.firestore();
 
-let currentUser = null;
-let users = [];
-let chats = {};
-let currentTab='all', activeChat=null;
+let currentUser=null, users=[], chats={}, currentTab='all', activeChat=null;
+let tempPhoto = null; // new uploaded photo
 
-// Confetti for Welcome
-function launchConfetti(){
-  let box=document.getElementById('confettiBox'); box.innerHTML='';
-  let colors=['#fff','#FFD700','#FF6B6B','#4ECDC4','#FF9FF3'];
-  for(let i=0;i<50;i++){
-    let c=document.createElement('div'); c.className='confetti';
-    c.style.left=Math.random()*100+'%'; c.style.background=colors[Math.floor(Math.random()*colors.length)];
-    c.style.animationDuration=(2+Math.random()*2)+'s'; c.style.animationDelay=Math.random()+'s';
-    c.style.width=(6+Math.random()*8)+'px'; c.style.height=c.style.width;
-    box.appendChild(c);
+// ===== AVATAR HELPER - NO DEFAULT PHOTO =====
+function getInitial(name){ return name ? name.trim().charAt(0).toUpperCase() : '?'; }
+function getColor(name){
+  const colors=['#00a884','#7C3AED','#DB2777','#EA580C','#0891B2','#16A34A','#DC2626','#2563EB'];
+  let sum=0; for(let c of (name||'?')) sum+=c.charCodeAt(0);
+  return colors[sum % colors.length];
+}
+function avatarHTML(name, photo, sizeClass){
+  // Agar photo nahi hai to LETTER dikhega, koi default image nahi
+  if(photo && photo.length>10){
+    return `<div class="avatar-letter ${sizeClass}"><img src="${photo}"></div>`;
+  } else {
+    return `<div class="avatar-letter ${sizeClass}" style="background:${getColor(name)}">${getInitial(name)}</div>`;
   }
 }
-function showWelcome(profile){
+function renderAllAvatars(){
+  if(!currentUser) return;
+  document.getElementById('myAvatarWrap').innerHTML = avatarHTML(currentUser.name, currentUser.avatar, '');
+  document.getElementById('dashAvatarWrap').innerHTML = avatarHTML(currentUser.name, currentUser.avatar, 'big');
+  document.getElementById('welcomeAvatarWrap').innerHTML = avatarHTML(currentUser.name, currentUser.avatar, 'huge');
+  if(activeChat){
+    document.getElementById('chatAvatarWrap').innerHTML = avatarHTML(activeChat.name, activeChat.avatar, 'mid');
+  }
+}
+
+// ===== PHOTO UPLOAD FROM GALLERY =====
+function handlePhotoUpload(event){
+  const file = event.target.files[0];
+  if(!file) return;
+  if(file.size > 2*1024*1024){ alert("Photo too large! Please choose photo under 2MB"); return; }
+  const reader = new FileReader();
+  reader.onload = function(e){
+    tempPhoto = e.target.result; // base64
+    // Preview update
+    document.getElementById('profilePreview').innerHTML = avatarHTML(currentUser.name, tempPhoto, 'huge');
+    // Live preview in header also
+    currentUser.avatar = tempPhoto;
+    renderAllAvatars();
+  };
+  reader.readAsDataURL(file);
+}
+function removePhoto(){
+  tempPhoto = "";
+  currentUser.avatar = "";
+  document.getElementById('profilePreview').innerHTML = avatarHTML(currentUser.name, "", 'huge');
+  renderAllAvatars();
+}
+
+function showError(msg){ let e=document.getElementById('loginError'); e.style.display='block'; e.innerText=msg; }
+function showWelcome(profile, cb){
   document.getElementById('loginScreen').style.display='none';
   document.getElementById('welcomeScreen').classList.add('show');
-  document.getElementById('welcomeAvatar').src=profile.avatar;
-  document.getElementById('welcomeTitle').innerText='Welcome, '+profile.name.split(' ')[0]+'!';
-  document.getElementById('welcomeSub').innerText='Great to see you here, '+profile.name+'.\nYour chats are loading...';
-  launchConfetti();
+  renderAllAvatars();
+  document.getElementById('welcomeTitle').innerText='Welcome, '+(profile.name||'Friend')+'!';
+  document.getElementById('welcomeSub').innerText='Logged in as '+profile.email;
   setTimeout(()=>{
     document.getElementById('welcomeScreen').classList.remove('show');
     document.getElementById('app').classList.add('show');
-  }, 2600);
+    document.getElementById('chatArea').classList.add('open');
+    if(cb) cb();
+  }, 2200);
 }
 
 async function loginWithGoogle(){
@@ -254,48 +316,63 @@ async function loginWithGoogle(){
     const provider = new firebase.auth.GoogleAuthProvider();
     const result = await auth.signInWithPopup(provider);
     const u = result.user;
-    await db.collection('users').doc(u.uid).set({name:u.displayName,email:u.email,avatar:u.photoURL,lastSeen:Date.now()}, {merge:true});
-    let profile={name: u.displayName, email: u.email, avatar: u.photoURL, uid: u.uid};
+    // Google wali photo ko pehli baar use karo, agar user ne apni photo change ki hogi to wahi rahegi
+    // Lekin is baar hum Google photo ko force nahi karenge agar pehle se custom photo hai
+    let saved = localStorage.getItem('gudu_current_user');
+    let oldPhoto = saved ? JSON.parse(saved).avatar : null;
+    let finalPhoto = oldPhoto || u.photoURL || ""; // Agar pehle custom photo hai to wahi, warna Google wali, warna khali
+    let profile={name:u.displayName, email:u.email, avatar:finalPhoto, uid:u.uid};
+    try{ await db.collection('users').doc(u.uid).set({name:u.displayName,email:u.email,avatar:finalPhoto,lastSeen:Date.now()}, {merge:true}); }catch(e){ console.log(e); }
     localStorage.setItem('gudu_current_user', JSON.stringify(profile));
     currentUser=profile;
-    showWelcome(profile);
-    setupUI(profile);
-    loadRealUsers();
-  }catch(e){ alert("Login Error: "+e.message+"\n\nPlease enable Google in Firebase > Authentication > Sign-in method"); }
+    showWelcome(profile, ()=>{ setupUI(profile); loadRealUsers(); });
+  }catch(e){ showError("Login Error: "+e.message); alert("Login Error: "+e.message); }
 }
 function loginWithEmail(){
   let email=document.getElementById('emailInput').value.trim();
   let name=document.getElementById('nameInput').value.trim();
-  if(!email || !name){ alert("Please enter Gmail and Name"); return; }
-  if(!email.includes('@')){ alert("Please enter a valid Gmail"); return; }
-  let profile={name, email, avatar:'https://i.pravatar.cc/100?u='+email, uid:'local_'+email};
+  if(!email || !name){ showError("Please enter Gmail and Name"); return; }
+  // Email login pe koi photo nahi hogi - sirf letter dikhega
+  let saved = localStorage.getItem('gudu_current_user');
+  let oldPhoto = saved && JSON.parse(saved).email===email ? JSON.parse(saved).avatar : "";
+  let profile={name, email, avatar:oldPhoto||"", uid:'local_'+email};
   localStorage.setItem('gudu_current_user', JSON.stringify(profile));
   currentUser=profile;
-  showWelcome(profile);
-  setupUI(profile);
+  showWelcome(profile, ()=>{ setupUI(profile); });
 }
 function setupUI(profile){
-  document.getElementById('myName').innerText = profile.name;
-  document.getElementById('myBio').innerText = profile.email;
-  document.getElementById('myAvatar').src = profile.avatar;
-  renderUsers();
+  document.getElementById('myName').innerText=profile.name;
+  document.getElementById('myBio').innerText=profile.email;
+  document.getElementById('dashName').innerText='Welcome back, '+profile.name.split(' ')[0]+'!';
+  document.getElementById('dashEmail').innerText=profile.email;
+  let h=new Date().getHours();
+  let greet=h<12?'Good Morning':h<17?'Good Afternoon':'Good Evening';
+  document.getElementById('dashTime').innerText=greet+' • '+new Date().toDateString();
+  renderAllAvatars(); renderUsers(); renderDashboardFriends();
 }
-function logout(){
-  localStorage.removeItem('gudu_current_user');
-  auth.signOut();
-  location.reload();
-}
-async function loadRealUsers(){
+function logout(){ localStorage.removeItem('gudu_current_user'); auth.signOut().catch(()=>{}); location.reload(); }
+
+function loadRealUsers(){
   db.collection('users').onSnapshot(snap=>{
-    users = [];
+    users=[];
     snap.forEach(doc=>{
       let d=doc.data();
       if(d.email !== currentUser.email){
-        users.push({id:doc.id, name:d.name, email:d.email, avatar:d.avatar||'https://i.pravatar.cc/100?u='+d.email, last:'Tap to chat', time:'', following:false, online:true});
+        users.push({id:doc.id, name:d.name, email:d.email, avatar:d.avatar||"", last:'Tap to chat', following:false, online:true});
       }
     });
-    renderUsers();
-  });
+    renderUsers(); renderDashboardFriends();
+  }, err=>{ console.log(err); renderUsers(); renderDashboardFriends(); });
+}
+function renderDashboardFriends(){
+  let el=document.getElementById('dashFriends');
+  document.getElementById('statFriends').innerText=users.length;
+  document.getElementById('statChats').innerText=Object.keys(chats).length;
+  if(users.length===0){
+    el.innerHTML=`<div style="background:#111b21;border:1px solid #222d34;border-radius:14px;padding:20px;text-align:center;color:#8696a0;font-size:13px;line-height:1.7">No friends yet.<br>Share this link with your friend.<br>When they login with Google, they will appear here.<br><br><button onclick="addUser()" style="background:#00a884;color:#fff;padding:10px 18px;border-radius:20px;font-weight:700">+ Add by Gmail</button></div>`;
+    return;
+  }
+  el.innerHTML=users.map(u=>`<div class="friend-card" onclick="openChat('${u.id}')">${avatarHTML(u.name,u.avatar,'small')}<div class="f-info"><b>${u.name}</b><p>${u.email}</p></div><button class="chat-btn">Chat →</button></div>`).join('');
 }
 function renderUsers(){
   let q=document.getElementById('searchInput').value.toLowerCase();
@@ -305,40 +382,43 @@ function renderUsers(){
     return true;
   });
   if(list.length===0){
-    document.getElementById('userList').innerHTML=`<div class="empty-list"><b>No Users Yet</b><br><br>No real users found yet.<br>When your friend logs in with Google, they will appear here.<br><br>Or tap + to add by Gmail.</div>`;
+    document.getElementById('userList').innerHTML=`<div style="padding:30px;text-align:center;color:#8696a0;font-size:13px;line-height:1.7"><b style="color:white">No Users Yet</b><br>Friend login karega to yahan aayega.</div>`;
     return;
   }
   document.getElementById('userList').innerHTML=list.map(u=>`
     <div class="user ${activeChat?.id===u.id?'active':''}" onclick="openChat('${u.id}')">
-      <img src="${u.avatar}">
-      <div class="info"><div class="top"><b>${u.name}</b></div><p>${u.email}</p><p>${u.last}</p></div>
-      <button class="follow-btn ${u.following?'following':''}" onclick="event.stopPropagation();toggleFollow('${u.id}',this)">${u.following?'Following':'Follow'}</button>
+      ${avatarHTML(u.name,u.avatar,'mid')}<div class="info"><b>${u.name}</b><p>${u.email}</p><p>${u.last}</p></div>
+      <button class="follow-btn ${u.following?'following':''}" onclick="event.stopPropagation();toggleFollow('${u.id}')">${u.following?'Following':'Follow'}</button>
     </div>`).join('');
 }
 function setTab(t,el){currentTab=t; document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active')); el.classList.add('active'); renderUsers();}
+function showDashboard(){
+  document.getElementById('dashboardView').style.display='block';
+  document.getElementById('chatBox').style.display='none';
+  document.getElementById('chatArea').classList.add('open');
+  renderDashboardFriends();
+}
 function addUser(){
-  let email=prompt('Enter friend Gmail (who has logged in):'); if(!email) return;
+  let email=prompt('Enter friend Gmail:'); if(!email) return;
   let name=prompt('Enter their Name:'); if(!name) return;
   let id='manual_'+Date.now();
-  users.unshift({id, name, email, avatar:'https://i.pravatar.cc/100?u='+email, last:'New chat', time:'Now', following:false, online:true});
-  renderUsers(); openChat(id);
+  users.unshift({id, name, email, avatar:"", last:'New chat', following:false, online:true});
+  renderUsers(); renderDashboardFriends(); openChat(id);
 }
 function openChat(id){
   activeChat=users.find(u=>u.id===id);
-  document.getElementById('emptyState').style.display='none';
+  if(!activeChat) return;
+  document.getElementById('dashboardView').style.display='none';
   document.getElementById('chatBox').style.display='flex';
   document.getElementById('chatArea').classList.add('open');
   document.getElementById('chatName').innerText=activeChat.name;
-  document.getElementById('chatAvatar').src=activeChat.avatar;
-  renderMsgs(); renderUsers();
-  listenMessages();
+  renderAllAvatars();
+  renderMsgs(); renderUsers(); listenMessages();
 }
 function renderMsgs(){
+  if(!activeChat) return;
   let msgs=chats[activeChat.id]||[];
-  if(msgs.length===0){
-    document.getElementById('messages').innerHTML='<p style="text-align:center;color:#8696a0;font-size:13px;margin-top:20px">No messages yet. Say Hi!</p>';
-    return;
-  }
+  if(msgs.length===0){ document.getElementById('messages').innerHTML='<p style="text-align:center;color:#8696a0;font-size:13px;margin-top:20px">No messages yet. Say Hi!</p>'; return; }
   document.getElementById('messages').innerHTML=msgs.map(m=>`<div class="msg ${m.me?'me':'other'}">${m.text}<small>${m.time||''}</small></div>`).join('');
   let el=document.getElementById('messages'); el.scrollTop=el.scrollHeight;
 }
@@ -350,8 +430,10 @@ async function sendMsg(){
   chats[activeChat.id].push(msg);
   activeChat.last='You: '+text;
   renderMsgs(); renderUsers();
-  let chatId=[currentUser.uid, activeChat.id].sort().join('_');
-  await db.collection('chats').doc(chatId).collection('messages').add({text, from:currentUser.uid, fromName:currentUser.name, to:activeChat.id, time:Date.now()});
+  try{
+    let chatId=[currentUser.uid, activeChat.id].sort().join('_');
+    await db.collection('chats').doc(chatId).collection('messages').add({text, from:currentUser.uid, fromName:currentUser.name, to:activeChat.id, time:Date.now()});
+  }catch(e){ console.log(e); }
 }
 function listenMessages(){
   if(!activeChat) return;
@@ -363,27 +445,34 @@ function listenMessages(){
       chats[activeChat.id].push({text:d.text, me:d.from===currentUser.uid, time:new Date(d.time).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})});
     });
     renderMsgs();
-  });
+  }, err=>{ console.log(err); });
 }
-function toggleFollow(id,btn){
+function toggleFollow(id){
   let u=users.find(x=>x.id===id); u.following=!u.following;
-  db.collection('users').doc(currentUser.uid).collection('following').doc(id).set({following:u.following});
+  try{ db.collection('users').doc(currentUser.uid).collection('following').doc(id).set({following:u.following}); }catch(e){}
   renderUsers();
 }
 function openProfile(){
+  tempPhoto = null;
   document.getElementById('pName').value=currentUser.name;
   document.getElementById('pEmail').value=currentUser.email;
-  document.getElementById('pAvatarUrl').value=currentUser.avatar;
+  document.getElementById('pBio').value=currentUser.bio||'';
+  document.getElementById('profilePreview').innerHTML = avatarHTML(currentUser.name, currentUser.avatar, 'huge');
+  document.getElementById('photoInput').value='';
   document.getElementById('profileModal').classList.add('show');
 }
 async function saveProfile(){
-  currentUser.name=document.getElementById('pName').value;
-  currentUser.avatar=document.getElementById('pAvatarUrl').value||currentUser.avatar;
+  // Agar nayi photo upload ki hai to wahi save hogi
+  if(tempPhoto !== null){
+    currentUser.avatar = tempPhoto;
+  }
+  currentUser.name=document.getElementById('pName').value || currentUser.name;
+  currentUser.bio=document.getElementById('pBio').value;
   localStorage.setItem('gudu_current_user', JSON.stringify(currentUser));
-  await db.collection('users').doc(currentUser.uid).set({name:currentUser.name, avatar:currentUser.avatar}, {merge:true});
-  document.getElementById('myName').innerText=currentUser.name;
-  document.getElementById('myAvatar').src=currentUser.avatar;
+  try{ await db.collection('users').doc(currentUser.uid).set({name:currentUser.name, avatar:currentUser.avatar}, {merge:true}); }catch(e){}
+  setupUI(currentUser);
   closeModal('profileModal');
+  alert("Profile Saved!");
 }
 function closeModal(id){document.getElementById(id).classList.remove('show')}
 let stream=null;
@@ -391,20 +480,21 @@ async function startCall(type){
   if(!activeChat) return;
   document.getElementById('callTitle').innerText=(type==='video'?'Video':'Voice')+' Call - '+activeChat.name;
   document.getElementById('callModal').classList.add('show');
-  try{
-    stream=await navigator.mediaDevices.getUserMedia({video:type==='video',audio:true});
-    document.getElementById('localVideo').srcObject=stream;
-  }catch(e){ alert('Please allow Camera / Mic permission'); }
+  try{ stream=await navigator.mediaDevices.getUserMedia({video:type==='video',audio:true}); document.getElementById('localVideo').srcObject=stream; }catch(e){ alert('Please allow Camera / Mic permission'); }
 }
 function endCall(){ if(stream) stream.getTracks().forEach(t=>t.stop()); document.getElementById('callModal').classList.remove('show'); }
 
-// Auto Login - Show Welcome Again
-let saved=localStorage.getItem('gudu_current_user');
-if(saved){
-  let p=JSON.parse(saved); currentUser=p;
-  document.getElementById('loginScreen').style.display='none';
-  showWelcome(p); setupUI(p); loadRealUsers();
-}
+auth.onAuthStateChanged(user=>{
+  let saved=localStorage.getItem('gudu_current_user');
+  if(saved){
+    let p=JSON.parse(saved); currentUser=p;
+    if(document.getElementById('app').classList.contains('show')) return;
+    document.getElementById('loginScreen').style.display='none';
+    document.getElementById('app').classList.add('show');
+    document.getElementById('chatArea').classList.add('open');
+    setupUI(p); loadRealUsers();
+  }
+});
 renderUsers();
 </script>
 </body>
