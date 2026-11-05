@@ -3,124 +3,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GUDU MC - Best Minecraft Server</title>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<title>GUDU MC - Premium Minecraft Server</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Press+Start+2P&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Press Start 2P',cursive}
-body{background:#0f1a0f;color:white;overflow-x:hidden}
-/* ===== ANIMATED BACKGROUND ===== */
-.bg-anim{position:fixed;inset:0;z-index:-1;overflow:hidden;background:linear-gradient(180deg,#0a2a0a,#1a3a10,#0f1a0f);background-size:400% 400%;animation:bgMove 12s ease infinite}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0b0f0b;color:#fff;font-family:'Inter',sans-serif;overflow-x:hidden}
+.pixel{font-family:'Press Start 2P',cursive}
+
+/* ANIMATED BACKGROUND - PROFESSIONAL */
+.bg-anim{position:fixed;inset:0;z-index:-1;overflow:hidden;background:linear-gradient(180deg,#071207,#101d10,#071207);background-size:400% 400%;animation:bgMove 14s ease infinite}
 @keyframes bgMove{0%{background-position:0% 0%}50%{background-position:100% 100%}100%{background-position:0% 0%}}
-.block{position:absolute;width:50px;height:50px;image-rendering:pixelated;opacity:.7;animation:floatBlock linear infinite;box-shadow:0 0 20px rgba(124,252,0,.4)}
+.block{position:absolute;opacity:.18;animation:floatBlock linear infinite;border:1px solid rgba(124,252,0,.2)}
 @keyframes floatBlock{0%{transform:translateY(110vh) rotate(0deg)}100%{transform:translateY(-100px) rotate(360deg)}}
-.particle{position:absolute;width:8px;height:8px;background:#7CFC00;border-radius:0;animation:particleFloat linear infinite}
-@keyframes particleFloat{0%{transform:translateY(100vh);opacity:1}100%{transform:translateY(-10vh);opacity:0}}
+.particle{position:absolute;width:4px;height:4px;background:#7CFC00;animation:particleFloat linear infinite;opacity:.5}
+@keyframes particleFloat{0%{transform:translateY(100vh);opacity:.8}100%{transform:translateY(-10vh);opacity:0}}
 
 /* NAV */
-nav{position:fixed;top:0;width:100%;background:rgba(0,0,0,.9);display:flex;justify-content:space-between;align-items:center;padding:12px 20px;z-index:100;border-bottom:4px solid #7CFC00;animation:navGlow 2s infinite alternate}
-@keyframes navGlow{from{box-shadow:0 0 10px #7CFC00}to{box-shadow:0 0 25px #FFD700}}
-.logo{font-size:18px;color:#7CFC00;text-shadow:3px 3px 0 #000;animation:logoBounce 1.5s infinite}
-@keyframes logoBounce{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
-.logo span{color:#FFD700}
-nav ul{display:flex;list-style:none;gap:18px;font-size:10px}
-nav ul li:hover{color:#FFD700;cursor:pointer;transform:scale(1.2)}
+nav{position:fixed;top:0;width:100%;background:rgba(5,10,5,.92);backdrop-filter:blur(10px);display:flex;justify-content:space-between;align-items:center;padding:16px 30px;z-index:100;border-bottom:1px solid rgba(124,252,0,.3)}
+.logo{font-size:18px;color:#7CFC00;letter-spacing:1px}
+.logo span{color:#fff}
+nav ul{display:flex;list-style:none;gap:28px;font-size:13px;font-weight:600;letter-spacing:.5px}
+nav ul li{cursor:pointer;color:#ccc;transition:.2s}
+nav ul li:hover{color:#7CFC00}
 a{text-decoration:none;color:white}
 
 /* HERO */
-.hero{min-height:100vh;background:url('https://images.unsplash.com/photo-1587573089734-09cb69c0f2b4?q=80&w=2000&auto=format&fit=crop') center/cover;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden}
-.hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.55)}
-.hero-content{position:relative;z-index:2;animation:heroIn 1s ease}
-@keyframes heroIn{from{opacity:0;transform:translateY(50px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
-.hero h1{font-size:42px;line-height:1.4;text-shadow:5px 5px 0 #000;animation:titleGlow 2s infinite alternate}
-@keyframes titleGlow{from{text-shadow:5px 5px 0 #000,0 0 10px #7CFC00}to{text-shadow:5px 5px 0 #000,0 0 30px #FFD700}}
+.hero{min-height:100vh;background:url('https://images.unsplash.com/photo-1587573089734-09cb69c0f2b4?q=80&w=2000&auto=format&fit=crop') center/cover;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.6),rgba(0,0,0,.75))}
+.hero-content{position:relative;z-index:2;max-width:800px;padding:20px;animation:heroIn 1s ease}
+@keyframes heroIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.badge{display:inline-block;background:rgba(124,252,0,.15);border:1px solid #7CFC00;color:#7CFC00;padding:8px 16px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px;margin-bottom:20px}
+.hero h1{font-size:52px;line-height:1.2;font-weight:800;letter-spacing:-1px}
 .hero h1 span{color:#7CFC00}
-.hero p{margin:20px 0;font-size:12px;line-height:2;color:#ddd}
-.floating-creeper{font-size:70px;animation:creeperFloat 3s ease-in-out infinite;display:inline-block}
-@keyframes creeperFloat{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-20px) rotate(5deg)}}
-.btn{padding:16px 24px;background:#5aa32b;border:4px solid #000;box-shadow:inset -4px -4px 0 rgba(0,0,0,.4),0 6px 0 #000;font-size:12px;display:inline-block;margin:8px;cursor:pointer;animation:btnPulse 1.8s infinite}
-@keyframes btnPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
-.btn-yellow{background:#FFD700;color:#000;animation-delay:.3s}
-.btn:hover{transform:translateY(-5px) scale(1.05)!important}
-.ip-box{margin-top:20px;background:#000;border:3px solid #7CFC00;padding:14px 20px;font-size:11px;animation:ipGlow 1.5s infinite alternate}
-@keyframes ipGlow{from{box-shadow:0 0 5px #7CFC00}to{box-shadow:0 0 20px #7CFC00}}
-.ip-box b{color:#FFD700}
+.hero p{margin:22px 0;font-size:16px;line-height:1.7;color:#d1d1d1}
+.btn{padding:16px 28px;background:#5aa32b;border:none;border-radius:8px;font-size:14px;font-weight:700;display:inline-block;margin:8px;cursor:pointer;transition:.2s;box-shadow:0 8px 20px rgba(90,163,43,.3)}
+.btn:hover{transform:translateY(-3px);background:#6abf35}
+.btn-outline{background:transparent;border:2px solid #fff;box-shadow:none}
+.btn-outline:hover{background:#fff;color:#000}
+.ip-box{margin-top:26px;background:rgba(0,0,0,.7);border:1px solid rgba(124,252,0,.4);padding:16px 22px;border-radius:10px;font-size:13px;display:inline-block;backdrop-filter:blur(5px)}
+.ip-box b{color:#7CFC00;font-family:'Press Start 2P',cursive;font-size:11px}
+.live{color:#7CFC00;font-weight:700}
 
 /* MARQUEE */
-.marquee{background:#FFD700;color:#000;padding:12px;overflow:hidden;white-space:nowrap;font-size:11px;border-top:4px solid #000;border-bottom:4px solid #000}
-.marquee span{display:inline-block;animation:scroll 15s linear infinite}
+.marquee{background:#7CFC00;color:#000;padding:12px;overflow:hidden;white-space:nowrap;font-size:12px;font-weight:700;letter-spacing:1px}
+.marquee span{display:inline-block;animation:scroll 18s linear infinite}
 @keyframes scroll{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
 
-/* SECTIONS */
-section{padding:60px 20px;max-width:1100px;margin:auto;position:relative;z-index:1}
-h2{text-align:center;font-size:22px;margin-bottom:30px;color:#7CFC00;text-shadow:3px 3px 0 #000;animation:h2Shake 4s infinite}
-@keyframes h2Shake{0%,96%,100%{transform:translateX(0)}97%{transform:translateX(-3px)}98%{transform:translateX(3px)}99%{transform:translateX(0)}}
-h2 span{color:#FFD700}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-.card{background:rgba(43,43,43,.95);border:4px solid #000;padding:20px;text-align:center;box-shadow:0 8px 0 #000;transition:.3s;animation:cardFloat 3s ease-in-out infinite}
+/* SECTION */
+section{padding:70px 20px;max-width:1150px;margin:auto;position:relative;z-index:1}
+.sec-label{text-align:center;color:#7CFC00;font-size:12px;font-weight:800;letter-spacing:2px;margin-bottom:10px}
+h2{text-align:center;font-size:32px;font-weight:800;margin-bottom:12px}
+.sub{text-align:center;color:#aaa;font-size:15px;margin-bottom:40px;line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:0;overflow:hidden;transition:.3s;animation:cardFloat 4s ease-in-out infinite}
 .card:nth-child(2){animation-delay:.4s}.card:nth-child(3){animation-delay:.8s}.card:nth-child(4){animation-delay:1.2s}
-@keyframes cardFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.card:hover{transform:translateY(-12px) rotate(-1deg) scale(1.03)!important;border-color:#FFD700;box-shadow:0 0 25px #FFD700}
-.card img{width:100%;height:160px;object-fit:cover;border:3px solid #000;margin-bottom:15px;animation:imgZoom 4s ease-in-out infinite}
-@keyframes imgZoom{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
-.card h3{font-size:12px;margin-bottom:10px;color:#FFD700;line-height:1.6}
-.card p{font-size:9px;line-height:1.8;color:#ccc}
+@keyframes cardFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.card:hover{transform:translateY(-10px)!important;border-color:#7CFC00;box-shadow:0 20px 40px rgba(124,252,0,.15)}
+.card img{width:100%;height:180px;object-fit:cover;transition:.4s}
+.card:hover img{transform:scale(1.07)}
+.card-body{padding:22px}
+.card h3{font-size:17px;margin-bottom:10px}
+.card p{font-size:14px;line-height:1.6;color:#bbb}
+.card .tag{display:inline-block;background:#7CFC00;color:#000;font-size:11px;font-weight:800;padding:5px 10px;border-radius:5px;margin-bottom:12px}
 
 /* STATS */
-.stats{background:linear-gradient(90deg,#5aa32b,#7CFC00,#5aa32b);background-size:200% 100%;animation:statsMove 3s linear infinite;display:flex;flex-wrap:wrap;justify-content:space-around;text-align:center;padding:30px 10px;border-top:4px solid #000;border-bottom:4px solid #000}
-@keyframes statsMove{from{background-position:0% 0}to{background-position:200% 0}}
-.stats div h3{font-size:22px;color:#fff;text-shadow:3px 3px 0 #000;animation:numPop 2s infinite}
-@keyframes numPop{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
-.stats div p{font-size:9px;margin-top:8px;color:#000}
+.stats{background:#111a11;border-top:1px solid rgba(124,252,0,.2);border-bottom:1px solid rgba(124,252,0,.2);display:flex;flex-wrap:wrap;justify-content:space-around;text-align:center;padding:35px 10px}
+.stats div h3{font-size:28px;color:#fff}
+.stats div p{font-size:12px;margin-top:8px;color:#7CFC00;font-weight:700;letter-spacing:1px}
 
-/* GALLERY ANIMATED */
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
-.gallery img{width:100%;height:180px;object-fit:cover;border:4px solid #000;cursor:pointer;transition:.4s;animation:galleryFloat 4s ease-in-out infinite}
+/* GALLERY */
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.gallery img{width:100%;height:190px;object-fit:cover;border-radius:12px;cursor:pointer;transition:.35s;animation:galleryFloat 5s ease-in-out infinite}
 .gallery img:nth-child(2){animation-delay:.5s}.gallery img:nth-child(3){animation-delay:1s}.gallery img:nth-child(4){animation-delay:1.5s}.gallery img:nth-child(5){animation-delay:2s}.gallery img:nth-child(6){animation-delay:2.5s}
-@keyframes galleryFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-8px) rotate(1deg)}}
-.gallery img:hover{transform:scale(1.12) rotate(-2deg)!important;border-color:#FFD700;box-shadow:0 0 30px #FFD700;z-index:10}
+@keyframes galleryFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.gallery img:hover{transform:scale(1.05)!important;box-shadow:0 15px 30px rgba(0,0,0,.5);outline:2px solid #7CFC00}
 
 /* JOIN */
-.join-box{background:url('https://images.unsplash.com/photo-1614294148960-9aa740632a87?q=80&w=2000&auto=format&fit=crop') center/cover;border:4px solid #7CFC00;padding:40px;text-align:center;position:relative;overflow:hidden;animation:joinGlow 2s infinite alternate}
-@keyframes joinGlow{from{box-shadow:0 0 10px #7CFC00}to{box-shadow:0 0 35px #FFD700}}
-.join-box::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.6)}
-.join-inner{position:relative;z-index:2}
-.join-inner h2{color:white}
-footer{background:#000;text-align:center;padding:25px;font-size:9px;line-height:2;color:#888;border-top:4px solid #5aa32b}
-@media(max-width:600px){.hero h1{font-size:24px} nav ul{display:none}}
+.join-box{background:linear-gradient(135deg,#1a2f1a,#0f1a0f);border:1px solid rgba(124,252,0,.3);border-radius:20px;padding:45px 20px;text-align:center}
+.join-box h2{margin-bottom:15px}
+.join-box p{color:#ccc;line-height:1.7}
+.copy-btn{background:#fff;color:#000}
+@media(max-width:600px){.hero h1{font-size:32px} nav ul{display:none}}
+footer{background:#050805;text-align:center;padding:28px;font-size:13px;line-height:1.8;color:#777;border-top:1px solid rgba(255,255,255,.1)}
 </style>
 </head>
 <body>
 
-<!-- ANIMATED BACKGROUND -->
 <div class="bg-anim" id="bgAnim"></div>
 
 <nav>
-  <div class="logo">GUDU <span>MC</span> ⛏️</div>
-  <ul><li>HOME</li><li>MODES</li><li>GALLERY</li><li>SHOP</li></ul>
-  <a href="#join" class="btn" style="padding:10px 14px;font-size:10px;animation:none">PLAY NOW</a>
+  <div class="logo pixel">GUDU <span>MC</span></div>
+  <ul><li>HOME</li><li>GAME MODES</li><li>GALLERY</li><li>STORE</li></ul>
+  <a href="#join" class="btn" style="padding:11px 18px;font-size:13px;margin:0">PLAY NOW</a>
 </nav>
 
 <div class="hero">
   <div class="hero-content">
-    <div class="floating-creeper">💚🧟‍♂️💚</div>
-    <p>🔥 #1 MINECRAFT SERVER IN INDIA 🔥</p>
+    <div class="badge">PREMIUM MINECRAFT SERVER • INDIA</div>
     <h1>WELCOME TO<br><span>GUDU MC</span></h1>
-    <p>Survival • Bedwars • Skyblock • Lifesteal<br>1000+ Players Daily - Lag Free Experience</p>
-    <a class="btn" href="#join">▶ JOIN NOW</a>
-    <a class="btn btn-yellow" href="#modes">🎮 EXPLORE MODES</a>
-    <div class="ip-box">SERVER IP: <b>play.gudumc.fun</b> &nbsp; | &nbsp; VERSION: <b>1.16 - 1.21</b> &nbsp; <span style="color:#7CFC00">● 842 ONLINE</span></div>
+    <p>Experience the most stable and competitive Minecraft server. Survival, Bedwars, Skyblock and Lifesteal - all in one place with 99.9% uptime.</p>
+    <a class="btn" href="#join">JOIN SERVER</a>
+    <a class="btn btn-outline" href="#modes">EXPLORE MODES</a>
+    <br>
+    <div class="ip-box">SERVER IP: <b>play.gudumc.fun</b> &nbsp; | &nbsp; VERSION: 1.16 - 1.21 &nbsp; | &nbsp; <span class="live">842 ONLINE</span></div>
   </div>
 </div>
 
-<div class="marquee"><span>⭐ GUDU MC ⭐ NEW SEASON STARTED ⭐ FREE RANK GIVEAWAY ⭐ JOIN DISCORD FOR REWARDS ⭐ SURVIVAL • BEDWARS • SKYBLOCK • LIFESTEAL ⭐</span></div>
+<div class="marquee"><span>GUDU MC &nbsp;•&nbsp; NEW SEASON STARTED &nbsp;•&nbsp; FREE RANK GIVEAWAY &nbsp;•&nbsp; SURVIVAL &nbsp;•&nbsp; BEDWARS &nbsp;•&nbsp; SKYBLOCK &nbsp;•&nbsp; LIFESTEAL &nbsp;•&nbsp; JOIN DISCORD FOR REWARDS &nbsp;•&nbsp;</span></div>
 
 <section id="modes">
-  <h2>CHOOSE YOUR <span>MODE</span> 🎮</h2>
+  <div class="sec-label">GAME MODES</div>
+  <h2>Choose Your Adventure</h2>
+  <p class="sub">Four professionally managed game modes, updated weekly with new features and events.</p>
   <div class="grid">
-    <div class="card"><img src="https://images.unsplash.com/photo-1587573089734-09cb69c0f2b4?q=80&w=800&auto=format&fit=crop"><h3>⚔️ SURVIVAL SMP</h3><p>Apna ghar banao, team banao, boss fight karo. Real SMP feel!</p><br><a class="btn" style="font-size:9px;animation:none">PLAY</a></div>
-    <div class="card"><img src="https://images.unsplash.com/photo-1614294148960-9aa740632a87?q=80&w=800&auto=format&fit=crop"><h3>🛏️ BEDWARS</h3><p>Bed bachao, enemy ka bed todo. Fast PvP, Pro Players ka mode!</p><br><a class="btn" style="font-size:9px;animation:none">PLAY</a></div>
-    <div class="card"><img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?q=80&w=800&auto=format&fit=crop"><h3>🏝️ SKYBLOCK</h3><p>Ek chota island, badi sapne. Farm, Trade aur Rich bano!</p><br><a class="btn" style="font-size:9px;animation:none">PLAY</a></div>
-    <div class="card"><img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=800&auto=format&fit=crop"><h3>❤️ LIFESTEAL</h3><p>Maroge to Heart jayega, Jeetoge to Heart milega. Hardcore!</p><br><a class="btn" style="font-size:9px;animation:none">PLAY</a></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1587573089734-09cb69c0f2b4?q=80&w=800&auto=format&fit=crop"><div class="card-body"><span class="tag">MOST PLAYED</span><h3>Survival SMP</h3><p>Build your base, form teams and compete in boss fights. A true SMP experience.</p></div></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1614294148960-9aa740632a87?q=80&w=800&auto=format&fit=crop"><div class="card-body"><span class="tag">PVP</span><h3>Bedwars</h3><p>Protect your bed, destroy your enemies. Fast-paced PvP for competitive players.</p></div></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?q=80&w=800&auto=format&fit=crop"><div class="card-body"><span class="tag">ECONOMY</span><h3>Skyblock</h3><p>Start from a small island, farm, trade and become the richest player.</p></div></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=800&auto=format&fit=crop"><div class="card-body"><span class="tag">HARDCORE</span><h3>Lifesteal</h3><p>Every kill gives you a heart, every death takes one. High risk, high reward.</p></div></div>
   </div>
 </section>
 
@@ -128,11 +127,13 @@ footer{background:#000;text-align:center;padding:25px;font-size:9px;line-height:
   <div><h3>12,500+</h3><p>TOTAL PLAYERS</p></div>
   <div><h3>842</h3><p>ONLINE NOW</p></div>
   <div><h3>4</h3><p>GAME MODES</p></div>
-  <div><h3>99.9%</h3><p>UPTIME - NO LAG</p></div>
+  <div><h3>99.9%</h3><p>UPTIME</p></div>
 </div>
 
 <section>
-  <h2>EPIC <span>GALLERY</span> ✨</h2>
+  <div class="sec-label">GALLERY</div>
+  <h2>Server Showcase</h2>
+  <p class="sub">A look at our world, builds and community events.</p>
   <div class="gallery">
     <img src="https://images.unsplash.com/photo-1587573089734-09cb69c0f2b4?q=80&w=600&auto=format&fit=crop">
     <img src="https://images.unsplash.com/photo-1614294148960-9aa740632a87?q=80&w=600&auto=format&fit=crop">
@@ -141,47 +142,45 @@ footer{background:#000;text-align:center;padding:25px;font-size:9px;line-height:
     <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=600&auto=format&fit=crop">
     <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=600&auto=format&fit=crop">
   </div>
-  <p style="text-align:center;margin-top:20px;font-size:9px;color:#FFD700">👆 PHOTO PE HOVER KARO - DEKHO MAGIC!</p>
 </section>
 
 <section id="join">
-  <div class="join-box"><div class="join-inner">
-    <h2>READY TO PLAY? ⛏️</h2>
-    <p style="font-size:10px;line-height:2;margin:15px 0">Minecraft kholo > Multiplayer > Add Server > IP daalo:<br><b style="color:#FFD700;font-size:14px">play.gudumc.fun</b></p>
-    <a class="btn" onclick="navigator.clipboard.writeText('play.gudumc.fun');alert('IP Copy Ho Gaya!')">📋 COPY IP</a>
-    <a class="btn btn-yellow" href="https://discord.gg/gudumc" target="_blank">💬 JOIN DISCORD</a>
-  </div></div>
+  <div class="join-box">
+    <div class="sec-label">GET STARTED</div>
+    <h2>Ready To Play?</h2>
+    <p>Open Minecraft &gt; Multiplayer &gt; Add Server &gt; Enter IP:<br><b style="color:#7CFC00;font-family:'Press Start 2P',cursive;font-size:14px">play.gudumc.fun</b></p>
+    <br>
+    <a class="btn" onclick="navigator.clipboard.writeText('play.gudumc.fun');alert('IP Copied!')">COPY IP</a>
+    <a class="btn copy-btn" href="https://discord.gg/gudumc" target="_blank">JOIN DISCORD</a>
+  </div>
 </section>
 
 <footer>
   © 2026 GUDU MC - All Rights Reserved<br>
-  Made with ❤️ by GUDU | Not affiliated with Mojang<br>
-  DISCORD • YOUTUBE • INSTAGRAM
+  GUDU MC is not affiliated with Mojang Studios.<br>
+  DISCORD &nbsp;•&nbsp; YOUTUBE &nbsp;•&nbsp; INSTAGRAM
 </footer>
 
 <script>
-// Animated Minecraft Blocks + Particles
 const bg = document.getElementById('bgAnim');
-const colors = ['#5aa32b','#8B4513','#FFD700','#7CFC00','#00BFFF','#FF4444'];
-for(let i=0;i<18;i++){
+const colors = ['#5aa32b','#8B4513','#7CFC00','#2b2b2b'];
+for(let i=0;i<14;i++){
   let d=document.createElement('div');
   d.className='block';
   d.style.left=Math.random()*100+'%';
   d.style.background=colors[Math.floor(Math.random()*colors.length)];
-  d.style.animationDuration=(6+Math.random()*8)+'s';
+  d.style.animationDuration=(8+Math.random()*8)+'s';
   d.style.animationDelay=Math.random()*5+'s';
-  d.style.width=(20+Math.random()*40)+'px';
+  d.style.width=(18+Math.random()*35)+'px';
   d.style.height=d.style.width;
-  d.style.opacity=0.25;
   bg.appendChild(d);
 }
-for(let i=0;i<30;i++){
+for(let i=0;i<22;i++){
   let p=document.createElement('div');
   p.className='particle';
   p.style.left=Math.random()*100+'%';
-  p.style.animationDuration=(4+Math.random()*6)+'s';
+  p.style.animationDuration=(5+Math.random()*6)+'s';
   p.style.animationDelay=Math.random()*4+'s';
-  p.style.background=colors[Math.floor(Math.random()*colors.length)];
   bg.appendChild(p);
 }
 </script>
