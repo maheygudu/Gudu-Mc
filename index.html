@@ -3,26 +3,52 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GUDU CHAT - Real Chat App</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<title>GUDU CHAT - Connect With The World</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
 body{background:#0b141a;color:#e9edef;height:100vh;overflow:hidden}
 button{cursor:pointer;border:none}
-/* LOGIN SCREEN */
-#loginScreen{position:fixed;inset:0;background:#0b141a;display:flex;align-items:center;justify-content:center;z-index:200;padding:20px}
-.login-box{background:#111b21;width:100%;max-width:420px;border-radius:20px;padding:32px;text-align:center;border:1px solid #222d34}
-.login-box .logo{font-size:42px;margin-bottom:12px}
-.login-box h1{font-size:26px;margin-bottom:8px}
-.login-box p{color:#8696a0;font-size:14px;line-height:1.6;margin-bottom:22px}
-.google-btn{width:100%;background:#fff;color:#000;padding:14px;border-radius:12px;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;gap:10px}
-.google-btn:hover{transform:translateY(-1px)}
+/* ===== LOGIN SCREEN - CREATIVE ===== */
+#loginScreen{position:fixed;inset:0;background:linear-gradient(135deg,#0b141a 0%,#0f2a1e 50%,#0b141a 100%);display:flex;align-items:center;justify-content:center;z-index:200;padding:20px;overflow:hidden}
+#loginScreen::before{content:'';position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(0,168,132,.25),transparent);top:-100px;right:-100px;animation:pulseGlow 4s infinite alternate}
+#loginScreen::after{content:'';position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(0,168,132,.15),transparent);bottom:-100px;left:-100px;animation:pulseGlow 5s infinite alternate-reverse}
+@keyframes pulseGlow{from{transform:scale(1);opacity:.6}to{transform:scale(1.2);opacity:1}}
+.floating-emoji{position:absolute;font-size:32px;animation:floatUp 6s ease-in-out infinite;opacity:.4;z-index:0}
+@keyframes floatUp{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-20px) rotate(10deg)}}
+.login-box{background:rgba(17,27,33,.95);backdrop-filter:blur(20px);width:100%;max-width:440px;border-radius:24px;padding:36px;text-align:center;border:1px solid rgba(255,255,255,.1);box-shadow:0 30px 60px rgba(0,0,0,.5);position:relative;z-index:2;animation:slideIn .6s ease}
+@keyframes slideIn{from{opacity:0;transform:translateY(30px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.login-logo{width:80px;height:80px;background:linear-gradient(135deg,#00a884,#00d9a5);border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:38px;margin:0 auto 16px;box-shadow:0 10px 30px rgba(0,168,132,.4);animation:logoBounce 2.5s infinite}
+@keyframes logoBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.login-box h1{font-size:30px;font-weight:900;letter-spacing:-1px}
+.login-box h1 span{color:#00a884}
+.login-box .tagline{color:#8696a0;font-size:14px;line-height:1.6;margin:10px 0 24px}
+.feature-row{display:flex;gap:8px;justify-content:center;margin-bottom:22px;flex-wrap:wrap}
+.feature-row span{background:#202c33;padding:7px 12px;border-radius:20px;font-size:11px;font-weight:600;color:#cbd5d8}
+.google-btn{width:100%;background:#fff;color:#111;padding:15px;border-radius:14px;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;gap:10px;transition:.2s;box-shadow:0 8px 20px rgba(255,255,255,.1)}
+.google-btn:hover{transform:translateY(-2px);box-shadow:0 12px 25px rgba(255,255,255,.2)}
 .google-btn img{width:20px}
-.divider{margin:18px 0;color:#8696a0;font-size:12px}
-.login-box input{width:100%;background:#202c33;border:1px solid #2a3942;color:white;padding:13px;border-radius:10px;margin-bottom:10px;outline:none;font-size:14px}
-.email-btn{width:100%;background:#00a884;color:#fff;padding:13px;border-radius:10px;font-weight:700}
+.divider{margin:20px 0;color:#8696a0;font-size:12px;display:flex;align-items:center;gap:12px}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:#2a3942}
+.login-box input{width:100%;background:#202c33;border:1px solid #2a3942;color:white;padding:13px 14px;border-radius:12px;margin-bottom:10px;outline:none;font-size:14px}
+.login-box input:focus{border-color:#00a884}
+.email-btn{width:100%;background:#00a884;color:#fff;padding:14px;border-radius:12px;font-weight:700;font-size:14px}
+.email-btn:hover{background:#00b894}
 .note{margin-top:16px;font-size:11px;color:#666;line-height:1.6}
-/* APP */
+.note b{color:#8696a0}
+/* ===== WELCOME SCREEN ===== */
+#welcomeScreen{position:fixed;inset:0;background:linear-gradient(135deg,#00a884,#00d9a5);display:none;align-items:center;justify-content:center;z-index:300;text-align:center;color:white;padding:20px;overflow:hidden}
+#welcomeScreen.show{display:flex}
+.welcome-content{animation:welcomePop .6s ease;position:relative;z-index:2}
+@keyframes welcomePop{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+.welcome-content .big-emoji{font-size:70px;animation:celebrate 1s infinite}
+@keyframes celebrate{0%,100%{transform:rotate(-8deg) scale(1)}50%{transform:rotate(8deg) scale(1.15)}}
+.welcome-content h1{font-size:38px;font-weight:900;margin:14px 0 8px;line-height:1.2}
+.welcome-content p{font-size:16px;opacity:.9;line-height:1.6}
+.welcome-avatar{width:100px;height:100px;border-radius:50%;border:4px solid white;object-fit:cover;margin:0 auto;box-shadow:0 15px 30px rgba(0,0,0,.3)}
+.confetti{position:absolute;width:10px;height:10px;top:-10px;animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+/* ===== APP ===== */
 #app{display:none;height:100vh}
 #app.show{display:flex}
 .sidebar{width:360px;background:#111b21;border-right:1px solid #222d34;display:flex;flex-direction:column}
@@ -41,13 +67,11 @@ button{cursor:pointer;border:none}
 .user:hover,.user.active{background:#2a3942}
 .user img{width:50px;height:50px;border-radius:50%;object-fit:cover}
 .user .info{flex:1;min-width:0}
-.user .info .top{display:flex;justify-content:space-between}
 .user .info p{font-size:13px;color:#8696a0;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .follow-btn{background:#00a884;color:#fff;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700;flex-shrink:0}
 .follow-btn.following{background:#374045;color:#aebac1}
 .empty-list{padding:40px 20px;text-align:center;color:#8696a0;font-size:13px;line-height:1.7}
 .empty-list b{color:white;font-size:15px}
-/* CHAT */
 .chat-area{flex:1;display:flex;flex-direction:column;background:#0b141a}
 .chat-header{padding:10px 16px;background:#202c33;display:flex;align-items:center;gap:12px}
 .chat-header img{width:42px;height:42px;border-radius:50%;object-fit:cover}
@@ -64,8 +88,7 @@ button{cursor:pointer;border:none}
 .input-area button{width:46px;height:46px;border-radius:50%;background:#00a884;color:white;font-size:18px}
 .empty-chat{margin:auto;text-align:center;color:#8696a0;padding:30px}
 .empty-chat h3{color:white;margin-bottom:8px}
-/* MODAL */
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;z-index:300;padding:16px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;z-index:400;padding:16px}
 .modal.show{display:flex}
 .modal-box{background:#111b21;width:100%;max-width:420px;border-radius:16px;padding:24px}
 .modal-box input,.modal-box textarea{width:100%;background:#202c33;border:1px solid #2a3942;color:white;padding:12px;border-radius:10px;margin-bottom:12px;outline:none}
@@ -81,18 +104,35 @@ button{cursor:pointer;border:none}
 
 <!-- LOGIN -->
 <div id="loginScreen">
+  <span class="floating-emoji" style="top:15%;left:10%">💬</span>
+  <span class="floating-emoji" style="top:70%;left:85%;animation-delay:1s">📞</span>
+  <span class="floating-emoji" style="top:20%;right:12%;animation-delay:2s">📹</span>
+  <span class="floating-emoji" style="bottom:15%;left:15%;animation-delay:.5s">✨</span>
   <div class="login-box">
-    <div class="logo">💬</div>
-    <h1>GUDU CHAT</h1>
-    <p>Real chat, real people.<br>Login with Google to continue.</p>
+    <div class="login-logo">💬</div>
+    <h1>GUDU <span>CHAT</span></h1>
+    <p class="tagline">Chat, Call & Connect with your friends.<br>Fast. Secure. Real-time.</p>
+    <div class="feature-row"><span>💬 Real Chats</span><span>📞 Voice Calls</span><span>📹 Video Calls</span><span>👥 Follow</span></div>
     <button class="google-btn" onclick="loginWithGoogle()">
       <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"> Continue with Google
     </button>
-    <div class="divider">OR</div>
+    <div class="divider">OR CONTINUE WITH EMAIL</div>
     <input id="emailInput" type="email" placeholder="Enter your Gmail">
     <input id="nameInput" placeholder="Enter your Name">
-    <button class="email-btn" onclick="loginWithEmail()">Continue with Email</button>
-    <p class="note">Firebase Config daalne ke baad Google Login 100% real me kaam karega.<br>Abhi ke liye Email wala login test kar sakte ho.</p>
+    <button class="email-btn" onclick="loginWithEmail()">Continue with Email →</button>
+    <p class="note">By continuing, you agree to our Terms & Privacy Policy.<br><b>Project: gudu-mc-97807 • Secured by Firebase</b></p>
+  </div>
+</div>
+
+<!-- WELCOME -->
+<div id="welcomeScreen">
+  <div id="confettiBox"></div>
+  <div class="welcome-content">
+    <div class="big-emoji">🎉</div>
+    <img id="welcomeAvatar" class="welcome-avatar" src="">
+    <h1 id="welcomeTitle">Welcome!</h1>
+    <p id="welcomeSub">Great to see you here.<br>Let's start chatting!</p>
+    <p style="margin-top:18px;font-size:13px;background:rgba(0,0,0,.2);padding:10px 18px;border-radius:20px;display:inline-block">✨ Loading your chats...</p>
   </div>
 </div>
 
@@ -100,9 +140,9 @@ button{cursor:pointer;border:none}
 <div id="app">
   <div class="sidebar">
     <div class="my-profile">
-      <img id="myAvatar" src="https://i.pravatar.cc/100?img=12" onclick="openProfile()">
+      <img id="myAvatar" src="" onclick="openProfile()">
       <div style="flex:1;min-width:0"><b id="myName">Loading...</b><br><span id="myBio">...</span></div>
-      <div class="actions"><span onclick="addUser()">＋</span><span onclick="logout()">↪</span></div>
+      <div class="actions"><span title="New Chat" onclick="addUser()">＋</span><span title="Logout" onclick="logout()">↪</span></div>
     </div>
     <div class="search"><span>🔍</span><input id="searchInput" placeholder="Search users by Gmail / Name" oninput="renderUsers()"></div>
     <div class="tabs">
@@ -114,8 +154,8 @@ button{cursor:pointer;border:none}
 
   <div class="chat-area" id="chatArea">
     <div class="empty-chat" id="emptyState">
-      <h3>Welcome to Gudu Chat</h3>
-      <p>No chats yet.<br>Search user or add new chat to start.</p><br>
+      <h3>Welcome to Gudu Chat 👋</h3>
+      <p>No chats yet.<br>Search a user or start a new chat.</p><br>
       <button class="big-btn" style="width:auto;padding:12px 22px" onclick="addUser()">+ New Chat</button>
     </div>
     <div id="chatBox" style="display:none;flex:1;flex-direction:column">
@@ -124,8 +164,8 @@ button{cursor:pointer;border:none}
         <img id="chatAvatar" src="">
         <div class="h-info"><b id="chatName"></b><br><span id="chatStatus" style="font-size:12px;color:#00a884">Online</span></div>
         <div class="call-btns">
-          <button onclick="startCall('voice')">📞</button>
-          <button onclick="startCall('video')">📹</button>
+          <button title="Voice Call" onclick="startCall('voice')">📞</button>
+          <button title="Video Call" onclick="startCall('video')">📹</button>
         </div>
       </div>
       <div class="messages" id="messages"></div>
@@ -137,7 +177,6 @@ button{cursor:pointer;border:none}
   </div>
 </div>
 
-<!-- PROFILE MODAL -->
 <div class="modal" id="profileModal">
   <div class="modal-box">
     <h2 style="margin-bottom:12px">Your Profile</h2>
@@ -150,7 +189,6 @@ button{cursor:pointer;border:none}
   </div>
 </div>
 
-<!-- CALL MODAL -->
 <div class="modal" id="callModal">
   <div class="video-box">
     <video id="localVideo" autoplay muted playsinline></video>
@@ -163,83 +201,91 @@ button{cursor:pointer;border:none}
   </div>
 </div>
 
-<!-- FIREBASE SDK -->
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
 <script>
-// ============ YAHAN APNA FIREBASE CONFIG DALO ============
 const firebaseConfig = {
-  apiKey: "PASTE_YAHAN",
-  authDomain: "PASTE_YAHAN",
-  projectId: "PASTE_YAHAN",
-  storageBucket: "PASTE_YAHAN",
-  messagingSenderId: "PASTE_YAHAN",
-  appId: "PASTE_YAHAN"
+  apiKey: "AIzaSyDnRBlB6nrL8YzJkWRN3sLUbTiviyz8Eds",
+  authDomain: "gudu-mc-97807.firebaseapp.com",
+  projectId: "gudu-mc-97807",
+  storageBucket: "gudu-mc-97807.firebasestorage.app",
+  messagingSenderId: "326773708494",
+  appId: "1:326773708494:web:e024ab95876e064ac7229f",
+  measurementId: "G-16QD54YJ8N"
 };
-// ================================================
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
 
-let auth=null, db=null, firebaseReady=false;
-try{
-  if(firebaseConfig.apiKey !== "PASTE_YAHAN"){
-    firebase.initializeApp(firebaseConfig);
-    auth = firebase.auth();
-    db = firebase.firestore();
-    firebaseReady = true;
-  }
-}catch(e){ console.log("Firebase not configured yet", e); }
-
-let currentUser = null; // logged in user
-let users = []; // REAL users - Firebase se aayenge, koi demo nahi
-let chats = {}; // {userId: [msgs]}
+let currentUser = null;
+let users = [];
+let chats = {};
 let currentTab='all', activeChat=null;
 
-// --- LOGIN ---
-async function loginWithGoogle(){
-  if(!firebaseReady){
-    alert("Pehle Firebase Config daalo!\nFirebase Console se config copy karke firebaseConfig me paste karo.\n\nTab tak Email wala login use karo.");
-    return;
+// Confetti for Welcome
+function launchConfetti(){
+  let box=document.getElementById('confettiBox'); box.innerHTML='';
+  let colors=['#fff','#FFD700','#FF6B6B','#4ECDC4','#FF9FF3'];
+  for(let i=0;i<50;i++){
+    let c=document.createElement('div'); c.className='confetti';
+    c.style.left=Math.random()*100+'%'; c.style.background=colors[Math.floor(Math.random()*colors.length)];
+    c.style.animationDuration=(2+Math.random()*2)+'s'; c.style.animationDelay=Math.random()+'s';
+    c.style.width=(6+Math.random()*8)+'px'; c.style.height=c.style.width;
+    box.appendChild(c);
   }
+}
+function showWelcome(profile){
+  document.getElementById('loginScreen').style.display='none';
+  document.getElementById('welcomeScreen').classList.add('show');
+  document.getElementById('welcomeAvatar').src=profile.avatar;
+  document.getElementById('welcomeTitle').innerText='Welcome, '+profile.name.split(' ')[0]+'!';
+  document.getElementById('welcomeSub').innerText='Great to see you here, '+profile.name+'.\nYour chats are loading...';
+  launchConfetti();
+  setTimeout(()=>{
+    document.getElementById('welcomeScreen').classList.remove('show');
+    document.getElementById('app').classList.add('show');
+  }, 2600);
+}
+
+async function loginWithGoogle(){
   try{
     const provider = new firebase.auth.GoogleAuthProvider();
     const result = await auth.signInWithPopup(provider);
     const u = result.user;
-    await loginSuccess({name: u.displayName, email: u.email, avatar: u.photoURL, uid: u.uid});
-    // Firestore me user save karo
     await db.collection('users').doc(u.uid).set({name:u.displayName,email:u.email,avatar:u.photoURL,lastSeen:Date.now()}, {merge:true});
+    let profile={name: u.displayName, email: u.email, avatar: u.photoURL, uid: u.uid};
+    localStorage.setItem('gudu_current_user', JSON.stringify(profile));
+    currentUser=profile;
+    showWelcome(profile);
+    setupUI(profile);
     loadRealUsers();
-  }catch(e){ alert("Login Error: "+e.message); }
+  }catch(e){ alert("Login Error: "+e.message+"\n\nPlease enable Google in Firebase > Authentication > Sign-in method"); }
 }
 function loginWithEmail(){
   let email=document.getElementById('emailInput').value.trim();
   let name=document.getElementById('nameInput').value.trim();
-  if(!email || !name){ alert("Gmail aur Naam dono daalo"); return; }
-  if(!email.includes('@')){ alert("Sahi Gmail daalo"); return; }
-  loginSuccess({name, email, avatar:'https://i.pravatar.cc/100?u='+email, uid:'local_'+email});
-  alert("Test Login Ho Gaya! Firebase daalne ke baad ye real Google Login ban jayega.");
-}
-function loginSuccess(profile){
-  currentUser = profile;
+  if(!email || !name){ alert("Please enter Gmail and Name"); return; }
+  if(!email.includes('@')){ alert("Please enter a valid Gmail"); return; }
+  let profile={name, email, avatar:'https://i.pravatar.cc/100?u='+email, uid:'local_'+email};
   localStorage.setItem('gudu_current_user', JSON.stringify(profile));
-  document.getElementById('loginScreen').style.display='none';
-  document.getElementById('app').classList.add('show');
+  currentUser=profile;
+  showWelcome(profile);
+  setupUI(profile);
+}
+function setupUI(profile){
   document.getElementById('myName').innerText = profile.name;
   document.getElementById('myBio').innerText = profile.email;
   document.getElementById('myAvatar').src = profile.avatar;
   renderUsers();
-  if(firebaseReady) loadRealUsers();
 }
 function logout(){
   localStorage.removeItem('gudu_current_user');
-  if(auth) auth.signOut();
+  auth.signOut();
   location.reload();
 }
-
-// --- REAL USERS FROM FIREBASE ---
 async function loadRealUsers(){
-  if(!firebaseReady) return;
-  // Firestore se saare users lao - current user ko chhod ke
   db.collection('users').onSnapshot(snap=>{
     users = [];
     snap.forEach(doc=>{
@@ -251,8 +297,6 @@ async function loadRealUsers(){
     renderUsers();
   });
 }
-
-// --- UI ---
 function renderUsers(){
   let q=document.getElementById('searchInput').value.toLowerCase();
   let list=users.filter(u=>{
@@ -261,7 +305,7 @@ function renderUsers(){
     return true;
   });
   if(list.length===0){
-    document.getElementById('userList').innerHTML=`<div class="empty-list"><b>No Users Yet</b><br><br>Abhi koi real user nahi hai.<br>Dusra dost login karega to yahan dikhega.<br><br>Ya + dabake Gmail se user add karo.</div>`;
+    document.getElementById('userList').innerHTML=`<div class="empty-list"><b>No Users Yet</b><br><br>No real users found yet.<br>When your friend logs in with Google, they will appear here.<br><br>Or tap + to add by Gmail.</div>`;
     return;
   }
   document.getElementById('userList').innerHTML=list.map(u=>`
@@ -273,8 +317,8 @@ function renderUsers(){
 }
 function setTab(t,el){currentTab=t; document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active')); el.classList.add('active'); renderUsers();}
 function addUser(){
-  let email=prompt('Dost ka Gmail daalo (jisne login kiya ho):'); if(!email) return;
-  let name=prompt('Uska Naam:'); if(!name) return;
+  let email=prompt('Enter friend Gmail (who has logged in):'); if(!email) return;
+  let name=prompt('Enter their Name:'); if(!name) return;
   let id='manual_'+Date.now();
   users.unshift({id, name, email, avatar:'https://i.pravatar.cc/100?u='+email, last:'New chat', time:'Now', following:false, online:true});
   renderUsers(); openChat(id);
@@ -287,7 +331,7 @@ function openChat(id){
   document.getElementById('chatName').innerText=activeChat.name;
   document.getElementById('chatAvatar').src=activeChat.avatar;
   renderMsgs(); renderUsers();
-  if(firebaseReady) listenMessages();
+  listenMessages();
 }
 function renderMsgs(){
   let msgs=chats[activeChat.id]||[];
@@ -306,14 +350,11 @@ async function sendMsg(){
   chats[activeChat.id].push(msg);
   activeChat.last='You: '+text;
   renderMsgs(); renderUsers();
-  // Firebase me bhejo - real DM
-  if(firebaseReady){
-    let chatId=[currentUser.uid, activeChat.id].sort().join('_');
-    await db.collection('chats').doc(chatId).collection('messages').add({text, from:currentUser.uid, fromName:currentUser.name, to:activeChat.id, time:Date.now()});
-  }
+  let chatId=[currentUser.uid, activeChat.id].sort().join('_');
+  await db.collection('chats').doc(chatId).collection('messages').add({text, from:currentUser.uid, fromName:currentUser.name, to:activeChat.id, time:Date.now()});
 }
 function listenMessages(){
-  if(!firebaseReady || !activeChat) return;
+  if(!activeChat) return;
   let chatId=[currentUser.uid, activeChat.id].sort().join('_');
   db.collection('chats').doc(chatId).collection('messages').orderBy('time').onSnapshot(snap=>{
     chats[activeChat.id]=[];
@@ -326,30 +367,25 @@ function listenMessages(){
 }
 function toggleFollow(id,btn){
   let u=users.find(x=>x.id===id); u.following=!u.following;
-  if(firebaseReady){
-    db.collection('users').doc(currentUser.uid).collection('following').doc(id).set({following:u.following});
-  }
+  db.collection('users').doc(currentUser.uid).collection('following').doc(id).set({following:u.following});
   renderUsers();
 }
 function openProfile(){
   document.getElementById('pName').value=currentUser.name;
   document.getElementById('pEmail').value=currentUser.email;
   document.getElementById('pAvatarUrl').value=currentUser.avatar;
-  document.getElementById('pBio').value='';
   document.getElementById('profileModal').classList.add('show');
 }
 async function saveProfile(){
   currentUser.name=document.getElementById('pName').value;
   currentUser.avatar=document.getElementById('pAvatarUrl').value||currentUser.avatar;
   localStorage.setItem('gudu_current_user', JSON.stringify(currentUser));
-  if(firebaseReady) await db.collection('users').doc(currentUser.uid).set({name:currentUser.name, avatar:currentUser.avatar}, {merge:true});
+  await db.collection('users').doc(currentUser.uid).set({name:currentUser.name, avatar:currentUser.avatar}, {merge:true});
   document.getElementById('myName').innerText=currentUser.name;
   document.getElementById('myAvatar').src=currentUser.avatar;
   closeModal('profileModal');
 }
 function closeModal(id){document.getElementById(id).classList.remove('show')}
-
-// --- CALLS - WebRTC Real Camera ---
 let stream=null;
 async function startCall(type){
   if(!activeChat) return;
@@ -358,13 +394,17 @@ async function startCall(type){
   try{
     stream=await navigator.mediaDevices.getUserMedia({video:type==='video',audio:true});
     document.getElementById('localVideo').srcObject=stream;
-  }catch(e){ alert('Camera/Mic permission allow karo'); }
+  }catch(e){ alert('Please allow Camera / Mic permission'); }
 }
 function endCall(){ if(stream) stream.getTracks().forEach(t=>t.stop()); document.getElementById('callModal').classList.remove('show'); }
 
-// Auto login if already logged in
+// Auto Login - Show Welcome Again
 let saved=localStorage.getItem('gudu_current_user');
-if(saved){ loginSuccess(JSON.parse(saved)); }
+if(saved){
+  let p=JSON.parse(saved); currentUser=p;
+  document.getElementById('loginScreen').style.display='none';
+  showWelcome(p); setupUI(p); loadRealUsers();
+}
 renderUsers();
 </script>
 </body>
